@@ -20,7 +20,7 @@ healthbot {
     topic interface {
         rule check-optical-temp-thresholds {
             /*
-             * Collects high and low threshold values for tx and rx in db.
+             * Collects high and  low threshold values for tx and rx in db.
              * Moniters the temperature and notifies via dashboard if there are 
              * anomalies.
              * 

@@ -18,7 +18,7 @@ healthbot {
              */		
             keys psm;
             synopsis "Chassis system power,state and temperature KPI";
-            description "Collects PSM power usage periodically and notifies anomaly when power usage exceed threshold";
+            description "Collects PSM power usage  periodically and notifies anomaly when power usage exceed threshold";
             /*
              * Sensor configuration to get data from network devices.
              */			
