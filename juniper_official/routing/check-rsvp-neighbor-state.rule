@@ -38,7 +38,7 @@
                 }
                 type string;
                 description "RSVP neighbor state";
-                enumerate __default__ as -1;
+                enumerate __default__ as -99;
                 enumerate DOWN as 0;
                 enumerate UP as 1;
             }
