@@ -172,9 +172,9 @@ healthbot {
                 type string;
                 description "FPC state";
                 enumerate __default__ as -1;				
-                enumerate Offline as 0;
-                enumerate Offlining as 0;
-                enumerate Onlining as 1;				
+                enumerate Offline as -6;
+                enumerate Offlining as -5;
+                enumerate Onlining as 0;				
                 enumerate online as 1;				
             }
             field temp-high-threshold {
