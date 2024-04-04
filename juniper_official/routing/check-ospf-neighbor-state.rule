@@ -52,6 +52,15 @@
                 }
                 type string;
                 description "Ospf neighbor state";
+                enumerate __default__ as -99;
+                enumerate Down as -30;
+                enumerate Attempt as -25;
+                enumerate Init as -20;
+                enumerate 2-Way as -15;
+                enumerate Exstart as -10;
+                enumerate Exchange as -5;
+                enumerate Loading as 0;				
+                enumerate Full as 1;				
             }
             /*
              * Anomaly detection logic.
