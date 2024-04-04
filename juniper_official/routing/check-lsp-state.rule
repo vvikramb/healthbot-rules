@@ -29,6 +29,9 @@
                 }
                 type string;
                 description "LSP operation status";
+                enumerate __default__ as -1;
+                enumerate DOWN as 0;
+                enumerate UP as 1;				
             }
             field lsp-state-change-count {
                 sensor lsp {
