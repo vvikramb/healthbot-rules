@@ -62,12 +62,12 @@
                 }
                 type string;
                 description "Sensor field to peer state";
-                enumerate __default__ as -1;				
-                enumerate Idle as 0;
-                enumerate Connect as 0;
-                enumerate Active as 0;
-                enumerate OpenSent as 0;
-                enumerate OpenConfirm as 0;				
+                enumerate __default__ as -99;				
+                enumerate Idle as -40;
+                enumerate Connect as -30;
+                enumerate Active as -20;
+                enumerate OpenSent as -10;
+                enumerate OpenConfirm as 0;
                 enumerate Established as 1;				
             }
             /*
