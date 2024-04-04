@@ -150,9 +150,9 @@ healthbot {
                 }				
                 type string;
                 description "State of power supply module";
-                enumerate __default__ as -1;				
+                enumerate __default__ as -99;
+                enumerate Fault as -10;				
                 enumerate Offline as 0;
-                enumerate Fault as 0;				
                 enumerate online as 1;				
             }
             field psm-temperature-degrees {
