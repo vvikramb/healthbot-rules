@@ -28,6 +28,14 @@
                 }
                 type string;
                 description "LDP session state";
+                enumerate __default__ as -99;
+                enumerate Nonexistent as -25;
+                enumerate Connecting as -20;
+                enumerate Initialized as -15;
+                enumerate OpenRec as -10;
+                enumerate OpenSent as -5;
+                enumerate Closing as 0;				
+                enumerate OPERATIONAL as 1;				
             }
             /*
              * Anomaly detection logic.
