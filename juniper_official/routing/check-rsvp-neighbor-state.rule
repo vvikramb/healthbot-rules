@@ -38,6 +38,9 @@
                 }
                 type string;
                 description "RSVP neighbor state";
+                enumerate __default__ as -1;
+                enumerate DOWN as 0;
+                enumerate UP as 1;
             }
             /*
              * Anomaly detection logic to detect rsvp neighbor state changes.
