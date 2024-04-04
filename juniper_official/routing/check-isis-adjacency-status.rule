@@ -45,13 +45,13 @@
                 }				
                 type string;
                 description "Isis neighbor state";
-                enumerate __default__ as -1;				
-                enumerate Down as 0;
-                enumerate New as 0;
+                enumerate __default__ as -99;
+                enumerate Rejected as -20;				
+                enumerate Down as -15;
+                enumerate New as -10;
+                enumerate Initializing as -5;				
                 enumerate One-way as 0;
-                enumerate Initializing as 0;
-                enumerate Rejected as 0;
-                enumerate up as 1;				
+                enumerate up as 1;	
             }
             field interface-name {
                 sensor isis-netconf {
