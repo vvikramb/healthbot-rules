@@ -62,6 +62,13 @@
                 }
                 type string;
                 description "Sensor field to peer state";
+                enumerate __default__ as -1;				
+                enumerate Idle as 0;
+                enumerate Connect as 0;
+                enumerate Active as 0;
+                enumerate OpenSent as 0;
+                enumerate OpenConfirm as 0;				
+                enumerate Established as 1;				
             }
             /*
              * Anomaly detection logic.
