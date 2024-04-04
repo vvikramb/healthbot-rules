@@ -150,6 +150,7 @@ healthbot {
                 }				
                 type string;
                 description "State of power supply module";
+                enumerate __default__ as -1;				
                 enumerate Offline as 0;
                 enumerate Fault as 0;				
                 enumerate online as 1;				
