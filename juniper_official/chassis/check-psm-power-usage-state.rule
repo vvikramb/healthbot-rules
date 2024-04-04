@@ -150,6 +150,9 @@ healthbot {
                 }				
                 type string;
                 description "State of power supply module";
+                enumerate Offline as 0;
+                enumerate Fault as 0;				
+                enumerate online as 1;				
             }
             field psm-temperature-degrees {
                 sensor components-oc {
