@@ -97,8 +97,8 @@ healthbot {
                 }
                 type string;
                 description "Status of the fan";
-                enumerate __default__ as -1;
-                enumerate Failed as 0;
+                enumerate __default__ as -99;
+                enumerate Failed as -1;
                 enumerate Absent as 0;				
                 enumerate ok as 1;				
             }
