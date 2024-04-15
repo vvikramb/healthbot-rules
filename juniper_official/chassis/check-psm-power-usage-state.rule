@@ -376,7 +376,7 @@ healthbot {
                                         release-support min-supported-release;
                                     }
                                 }
-                                platforms AX7509 {
+                                platforms ACX7509 {
                                     sensors components-oc-ptx;								
                                     releases 22.2R3 {
                                         release-support min-supported-release;
