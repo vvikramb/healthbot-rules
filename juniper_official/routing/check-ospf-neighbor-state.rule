@@ -4,7 +4,7 @@
  healthbot {
     topic routing.ospf {
         rule check-ospf-neighbor-state {
-            keys [ interface-name neighbor-id ];
+            keys [ interface-name neighbor-id instance-name ];
             synopsis "OSPF session state analyzer";
             description "Monitors the OPSF neighbor states";
             sensor ospf-neighbor-netconf {
@@ -31,6 +31,14 @@
                 type string;
                 description "Ospf interface name";
             }
+            field instance-name {
+                sensor ospf-neighbor-netconf {
+                    where "instance-name =~ /{{instance-name}}/";
+                    path instance-name;
+                }
+                type string;
+                description "Ospf instance name";
+            }			
             field neighbor-address {
                 sensor ospf-neighbor-netconf {
                     path neighbor-address;

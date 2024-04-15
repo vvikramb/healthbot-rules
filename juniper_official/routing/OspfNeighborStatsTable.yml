@@ -8,6 +8,7 @@ OspfNeighborStatsTable:
   key:
     - ospf-neighbor/interface-name
     - ospf-neighbor/neighbor-id
+    - ospf-instance-name
   view: OspfNeighborStatsView
 
 OspfNeighborStatsView:
