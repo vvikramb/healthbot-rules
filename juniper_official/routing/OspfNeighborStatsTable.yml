@@ -36,7 +36,7 @@ xslt: "<xsl:stylesheet version=\"1.0\"
       <name>neighbor-address</name>
       <name>dr-address</name>
       <name>bdr-address</name>
-      <name>instance-name</name>
+      <name>ospf-instance-name</name>
  </ns:WhiteList>
  <ns:blacklist>
       <name>neighbor-up-time</name>
