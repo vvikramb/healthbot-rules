@@ -81,7 +81,7 @@
                     then {
                         status {
                             color green;
-                            message "Route table($table-name) total route count($table-total-route-count)  is normal and active route count is ($active-route-count)";
+                            message "Route table($table-name) total route count($table-total-route-count) is normal and active route count is ($active-route-count)";
                         }
                     }
                 }
