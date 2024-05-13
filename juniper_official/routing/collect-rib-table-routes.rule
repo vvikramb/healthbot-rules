@@ -81,7 +81,7 @@
                     then {
                         status {
                             color green;
-                            message "Route table($table-name) total route count($table-total-route-count) is normal";
+                            message "Route table($table-name) total route count($table-total-route-count)  is normal and active route count is ($active-route-count)";
                         }
                     }
                 }
@@ -95,7 +95,7 @@
                     then {
                         status {
                             color red;
-                            message "Route table($table-name) total route count($table-total-route-count) is abnormal";
+                            message "Route table($table-name) total route count($table-total-route-count) is abnormal and active route count is ($active-route-count)";
                         }
                     }
                 }
@@ -172,6 +172,13 @@
                                     }
                                 }
                             }
+                            products PTX {
+                                platforms PTX10008 {
+                                    releases 22.2R3 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                            }							
                         }						
                     }
                 }
