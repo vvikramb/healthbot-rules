@@ -759,8 +759,7 @@
                 supported-devices {
                     juniper {
                         operating-system junos {
-                            sensors lsp;                            						
-                            products MX {
+                                products MX {
                                 sensors lsp;							
                                 platforms MX2010 {
                                     releases 17.4R1 {
@@ -788,47 +787,48 @@
                                     }
                                 }
                                 platforms MX10004 {
-                                    sensors lsp-updated;
-                                    releases 22.3R1 {
-                                        sensors lsp-updated;
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10008 {
-                                    sensors lsp-updated;
-                                    releases 22.3R1 {
-                                        sensors lsp-updated;
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10016 {
-                                    sensors lsp-updated;
-                                    releases 22.3R1 {
-                                        sensors lsp-updated;
+                                     releases 20.1R1 {
+                                        sensors lsp-updated;									
                                         release-support min-supported-release;
                                     }
                                 }								
                             }
                             products JNP {
-                                sensors lsp-updated;
+                                sensors lsp;							
                                 platforms JNP10004 {
-                                    releases 22.3R1 {
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms JNP10008 {
-                                    releases 22.3R1 {
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms JNP10016 {
-                                    releases 22.3R1 {
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;									
                                         release-support min-supported-release;
                                     }
                                 }								
                             }							
                             products PTX {
-                                platforms PTX1000 {
+                                sensors lsp;                                
+								platforms PTX1000 {
                                     releases 17.4R1 {
                                         release-support min-supported-release;
                                     }
@@ -845,6 +845,7 @@
                                 }
                             }
                             products QFX {
+                                sensors lsp;							
                                 platforms QFX10000 {
                                     releases 17.4R1 {
                                         release-support min-supported-release;
@@ -859,17 +860,19 @@
                         }
                         operating-system junosEvolved {
                             products ACX {
-                                sensors lsp-updated;							
-                                platforms All {
-                                    releases 22.3R1 {
+                                sensors lsp;     							
+			                    platforms All {
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;									
                                         release-support min-supported-release;
-                                    }
+                                    }									
                                 }
                             }
                             products PTX {
-                                sensors lsp-updated;
+                                sensors lsp;
                                 platforms PTX10008 {
-                                    releases 22.2R3 {
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;									
                                         release-support min-supported-release;
                                     }
                                 }								
