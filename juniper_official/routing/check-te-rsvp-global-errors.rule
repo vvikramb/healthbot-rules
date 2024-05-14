@@ -833,11 +833,6 @@
                                         release-support min-supported-release;
                                     }
                                 }
-                                platforms PTX10000 {
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
                                 platforms PTX5000 {
                                     releases 17.4R1 {
                                         release-support min-supported-release;
@@ -860,12 +855,12 @@
                         }
                         operating-system junosEvolved {
                             products ACX {
-                                sensors lsp;     							
+                                sensors lsp;						
 			                    platforms All {
                                     releases 20.1R1 {
                                         sensors lsp-updated;									
                                         release-support min-supported-release;
-                                    }									
+                                    }
                                 }
                             }
                             products PTX {
