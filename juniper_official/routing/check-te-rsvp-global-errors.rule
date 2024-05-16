@@ -879,10 +879,10 @@
                         }
                         operating-system junosEvolved {
                             products ACX {
-                                sensors lsp;						
+                                sensors lsp;			
 			                    platforms ACX7024 {
                                     releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                        sensors lsp-updated;
                                         release-support min-supported-release;
                                     }
                                 }
@@ -906,7 +906,7 @@
                                 }
 			                    platforms ACX7509 {
                                     releases 20.1R1 {
-                                        sensors lsp-updated;				
+                                        sensors lsp-updated;
                                         release-support min-supported-release;
                                     }
                                 }
@@ -915,12 +915,12 @@
                                 sensors lsp;
                                 platforms PTX10008 {
                                     releases 20.1R1 {
-                                        sensors lsp-updated;				
+                                        sensors lsp-updated;
                                         release-support min-supported-release;
                                     }
                                 }
-                            }						
-                        }					
+                            }				
+                        }				
                     }
                 }
             }
