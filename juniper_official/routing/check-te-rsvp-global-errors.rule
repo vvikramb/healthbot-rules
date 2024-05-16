@@ -880,31 +880,31 @@
                         operating-system junosEvolved {
                             products ACX {
                                 sensors lsp;			
-			                    platforms ACX7024 {
+                                platforms ACX7024 {
                                     releases 20.1R1 {
                                         sensors lsp-updated;
                                         release-support min-supported-release;
                                     }
                                 }
-			                    platforms ACX7100 {
+                                platforms ACX7100 {
                                     releases 20.1R1 {
                                         sensors lsp-updated;
                                         release-support min-supported-release;
                                     }
                                 }
-			                    platforms ACX7348 {
+                                platforms ACX7348 {
                                     releases 20.1R1 {
                                         sensors lsp-updated;
                                         release-support min-supported-release;
                                     }
                                 }
-			                    platforms ACX7024X {
+                                platforms ACX7024X {
                                     releases 20.1R1 {
                                         sensors lsp-updated;
                                         release-support min-supported-release;
                                     }
                                 }
-			                    platforms ACX7509 {
+                                platforms ACX7509 {
                                     releases 20.1R1 {
                                         sensors lsp-updated;
                                         release-support min-supported-release;
