@@ -4,7 +4,7 @@
  healthbot {
     topic routing.ospf {
         rule check-ospf-neighbor-state {
-            keys [ interface-name neighbor-id instance-name ];
+            keys [ interface-name neighbor-id instance-name neighbor-address ];
             synopsis "OSPF session state analyzer";
             description "Monitors the OPSF neighbor states";
             sensor ospf-neighbor-netconf {
@@ -41,6 +41,7 @@
             }			
             field neighbor-address {
                 sensor ospf-neighbor-netconf {
+                    where "neighbor-address =~ /{{ospf-neighbor-address}}/";				
                     path neighbor-address;
                 }
                 type string;
@@ -120,6 +121,11 @@
                 value .*;
                 description "Enter instance name in the form of regex e.g. vpn1, master etc.";
                 type string;
+            }
+            variable ospf-neighbor-address {
+                value .*;
+                description "Enter ospf neighbor address to be monitored in the form of regex e.g. 192.168.1.1|172.16.1.1";
+                type string;
             }			
             rule-properties {
                 version 2;
@@ -177,11 +183,31 @@
                         }
                         operating-system junosEvolved {
                             products ACX {
-                                platforms All {
+                                platforms ACX7024 {
                                     releases 22.3R1 {
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms ACX7024X {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7100 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7509 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7348 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
                             }
                         }						
                     }
