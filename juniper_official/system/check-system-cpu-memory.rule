@@ -122,6 +122,7 @@ healthbot {
             * Anomaly detection logic.
             */
              trigger routing-engine-cpu-utilization {
+                 alert-type hardware.cpu.routing_engine.routing-engine-cpu-utilization;
                  synopsis "Routing engine CPU KPI";
                  description "Sets health based on increase in RE CPU utilization";
                  frequency 1offset;
@@ -204,6 +205,7 @@ healthbot {
                  }				 
              }
              trigger routing-engine-memory-buffer-utilization {
+                 alert-type hardware.memory.routing_engine.routing-engine-memory-buffer-utilization;
                  synopsis "RE system memory buffer utilization kpi";
                  description "Sets health based on increase in system memory buffer utilization";
                  frequency 1offset;

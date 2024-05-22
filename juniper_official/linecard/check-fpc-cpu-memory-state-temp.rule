@@ -204,6 +204,7 @@ healthbot {
              * Anomaly detection logic
              */			
             trigger fpc-buffer-memory-utilization {
+                alert-type hardware.memory.fpc.buffer.fpc-buffer-memory-utilization;
                 synopsis "FPC buffer memory utilization KPI";
                 description "Sets health based on increase in fpc buffer memory utilization";
                 frequency 1offset;
@@ -266,6 +267,7 @@ healthbot {
                 }
             }
             trigger fpc-cpu-utilization {
+                alert-type hardware.cpu.fpc.fpc-cpu-utilization;
                 synopsis "FPC CPU utilization KPI";
                 description "Sets health based on increase in FPC CPU utilization";
                 frequency 1offset;
@@ -328,6 +330,7 @@ healthbot {
                 }
             }
             trigger fpc-heap-memory-utilization {
+                alert-type hardware.memory.fpc.heap.fpc-heap-memory-utilization;
                 synopsis "FPC heap memory utilization KPI";
                 description "Sets health based on increase in fpc heap memory utilization";
                 frequency 1offset;
@@ -375,6 +378,7 @@ healthbot {
                 }
             }
             trigger fpc-state {
+                alert-type hardware.state.fpc.fpc-state;
                 synopsis "FPC State kpi";
                 description "Sets health based on FPC State";			
                 frequency 1offset;
@@ -412,6 +416,7 @@ healthbot {
                 }
             }
             trigger fpc-temperature {
+                alert-type hardware.temperature.fpc.fpc-temperature;
                 synopsis "FPC Temperature kpi";
                 description "Sets health based on FPC Temperature";
                 frequency 1offset;
