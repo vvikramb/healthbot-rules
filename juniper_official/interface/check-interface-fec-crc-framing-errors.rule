@@ -216,6 +216,7 @@ healthbot {
                 }
             }
             trigger input-crc-errors {
+                alert-type interfaces.rx_errors.crc.input-crc-errors;
                 frequency 1offset;
                 /*
                  * Sets color to green when the input-crc-errors count is not increasing
@@ -254,6 +255,7 @@ healthbot {
                 }
             }
             trigger output-crc-errors {
+                alert-type interfaces.tx_errors.crc.output-crc-errors;
                 frequency 1offset;
                 /*
                  * Sets color to green when the output-crc-errors count is not increasing

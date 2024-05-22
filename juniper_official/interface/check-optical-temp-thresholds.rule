@@ -66,6 +66,7 @@ healthbot {
              * Anomaly detection logic.
              */			
             trigger interface-optical-temperature {
+                alert-type interfaces.temperature.interface-optical-temperature;
                 synopsis "high optical temperature";
                 description "Sets health based on the optical temperature";
                 frequency 1offset;

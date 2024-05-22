@@ -223,6 +223,7 @@ healthbot {
              * Anomaly detection logic.
              */			
             trigger uncorrected-forward-error-correction-errors {
+                alert-type interfaces.optical.error.uncorrected-forward-error-correction-errors;
                 synopsis "Uncorrected forward error correction errors KPI";
                 description "Sets health based on Uncorrected forward error correction errors";			
                 frequency 1offset;
@@ -256,6 +257,7 @@ healthbot {
     }
             }
             trigger interface-rx-loss-of-signal-functionality {
+                alert-type interfaces.rx.los.interface-rx-loss-of-signal-functionality;
                 synopsis "Interface rx loss of signal functionality KPI";
                 description "Sets health based on Interface rx loss of signal functionality";			
                 frequency 1offset;
@@ -291,6 +293,7 @@ healthbot {
                 }
             }
             trigger interface-tx-laser-disabled-alarm {
+                alert-type interfaces.tx.laser_disabled_alarm.interface-tx-laser-disabled-alarm;
                 synopsis "Interface tx laser disabled alarm KPI";
                 description "Sets health based on Interface tx laser disabled alarm";			
                 frequency 1offset;
@@ -326,6 +329,7 @@ healthbot {
                 }
             }
             trigger interface-tx-loss-of-signal-functionality {
+                alert-type interfaces.tx.los.interface-tx-loss-of-signal-functionality;
                 synopsis "Interface tx loss of signal functionality KPI";
                 description "Sets health based on Interface tx loss of signal functionality";			
                 frequency 1offset;
@@ -361,6 +365,7 @@ healthbot {
                 }
             }
             trigger interface-optical-rx-power {
+                alert-type interfaces.rx.power.interface-optical-rx-power;
                 synopsis "Interface optical rx high power KPI";
                 description "Sets health based on Interface optical rx high power";
                 frequency 1offset;
@@ -442,6 +447,7 @@ healthbot {
                 }
             }
             trigger interface-optical-tx-power {
+                alert-type interfaces.tx.power.interface-optical-tx-power;
                 synopsis "Interface optical tx high power KPI";
                 description "Sets health based on Interface optical tx high power";
                 frequency 1offset;

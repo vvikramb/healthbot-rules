@@ -212,6 +212,7 @@ healthbot {
              * Anomaly detection logic.
              */			
             trigger interface-input-traffic {
+                alert-type interfaces.rx.traffic.interface-input-traffic;
                 synopsis "Interface input traffic kpi";
                 description "Sets health based on input traffic exceed threshold";
                 frequency 1offset;
@@ -264,6 +265,7 @@ healthbot {
                 }				
             }    
             trigger interface-input-errors {
+                alert-type interfaces.rx_errors.input.interface-input-errors;
                 synopsis "Interface input-errors kpi";
                 description "Sets health based on the change in input-errors count";
                 frequency 1offset;
@@ -306,6 +308,7 @@ healthbot {
                 }			
             }
             trigger interface-link-flaps {
+                alert-type interfaces.link_flaps.interface-link-flaps;
                 synopsis "Link flaps KPI";
                 description "Sets health based on the change in flap count";
                 frequency 1offset;
@@ -346,6 +349,7 @@ healthbot {
                 }		
             }
             trigger interface-link-state {
+                alert-type interfaces.link_failure.interface-link-state;
                 synopsis "link state kpi";
                 description "Sets health based on link state";
                 frequency 1offset;
@@ -382,6 +386,7 @@ healthbot {
                 }				
             }
             trigger interface-output-errors {
+                alert-type interfaces.tx_errors.output.interface-output-errors;
                 synopsis "Interface output-errors kpi";
                 description "Sets health based on the change in output-errors count";
                 frequency 1offset;
@@ -424,6 +429,7 @@ healthbot {
                 }			
             }
             trigger interface-output-traffic {
+                alert-type interfaces.tx.traffic.interface-output-traffic;
                 synopsis "Interface output traffic kpi";
                 description "Sets health based on output traffic exceed threshold";
                 frequency 1offset;
