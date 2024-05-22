@@ -124,6 +124,7 @@ healthbot {
              * Anomaly detection logic.
              */
             trigger routing-engine-temperature {
+                alert-type hardware.temperature.routing_engine.routing-engine-temperature;			
                 synopsis "RE temperature KPI";
                 description "Sets health based increase in RE temperature";
                 frequency 1offset;
@@ -206,6 +207,7 @@ healthbot {
                 }
             }
             trigger routing-engine-cpu-temperature {
+                alert-type hardware.temperature.routing_engine.cpu.routing-engine-cpu-temperature;			
                 synopsis "RE CPU temperature KPI";
                 description "Sets health based increase in RE CPU temperature";
                 frequency 1offset;

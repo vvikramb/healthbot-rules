@@ -156,6 +156,7 @@ healthbot {
              * Anomaly detection logic
              */			
             trigger fan-state {
+                alert-type hardware.state.fan.fan-state;
                 synopsis "Fan State KPI";
                 description "Sets health based on Fan state";			
                 frequency 1offset;
@@ -195,6 +196,7 @@ healthbot {
                 }
             }
             trigger rpm-percent {
+                alert-type hardware.rpm.fan.fan-state;
                 synopsis "Fan RPM KPI";
                 description "Sets health based on Fan RPM percentage";			
                 frequency 1offset;
