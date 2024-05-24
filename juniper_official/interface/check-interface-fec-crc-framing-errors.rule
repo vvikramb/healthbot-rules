@@ -99,7 +99,7 @@ healthbot {
              * Anomaly detection logic.
              */			
             trigger fec-corrected-errors {
-                alert-type interfaces.fec_corrected_errors.fec-corrected-errors;			
+                alert-type interfaces.errors.fec_corrected.fec-corrected-errors;			
                 frequency 1offset;
                 /*
                  * Sets color to green when the fec-corrected-errors count is not increasing
@@ -138,7 +138,7 @@ healthbot {
                 }
             }
             trigger fec-uncorrected-errors {
-                alert-type interfaces.fec_uncorrected_errors.fec-uncorrected-errors;
+                alert-type interfaces.errors.fec_uncorrected.fec-uncorrected-errors;
                 frequency 1offset;
                 /*
                  * Sets color to green when the fec-uncorrected-errors count is not increasing
