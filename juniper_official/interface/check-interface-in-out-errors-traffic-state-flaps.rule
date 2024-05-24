@@ -265,7 +265,7 @@ healthbot {
                 }				
             }    
             trigger interface-input-errors {
-                alert-type interfaces.rx_errors.input.interface-input-errors;
+                alert-type interfaces.rx_errors.interface-input-errors;
                 synopsis "Interface input-errors kpi";
                 description "Sets health based on the change in input-errors count";
                 frequency 1offset;
@@ -386,7 +386,7 @@ healthbot {
                 }				
             }
             trigger interface-output-errors {
-                alert-type interfaces.tx_errors.output.interface-output-errors;
+                alert-type interfaces.tx_errors.interface-output-errors;
                 synopsis "Interface output-errors kpi";
                 description "Sets health based on the change in output-errors count";
                 frequency 1offset;

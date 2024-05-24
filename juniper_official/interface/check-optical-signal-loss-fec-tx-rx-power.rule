@@ -223,7 +223,7 @@ healthbot {
              * Anomaly detection logic.
              */			
             trigger uncorrected-forward-error-correction-errors {
-                alert-type interfaces.optical.error.uncorrected-forward-error-correction-errors;
+                alert-type interfaces.optical.errors.uncorrected-forward-error-correction-errors;
                 synopsis "Uncorrected forward error correction errors KPI";
                 description "Sets health based on Uncorrected forward error correction errors";			
                 frequency 1offset;
