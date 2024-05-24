@@ -514,7 +514,7 @@ healthbot {
                 }
             }
             trigger pfe-stack-underflow-discard {
-                alert-type hardware.fpc.pfe.pfe-stack-overflow-discard;			
+                alert-type hardware.fpc.pfe.pfe-stack-underflow-discard;			
                 synopsis "PFE stack underflow discards KPI";
                 description "Sets health based on the change in PFE stack underflow discard count";
                 frequency 1offset;
@@ -553,7 +553,7 @@ healthbot {
                 }
             }
             trigger pfe-tcp-header-error-discard {
-                alert-type hardware.fpc.pfe.pfe-stack-overflow-discard;			
+                alert-type hardware.fpc.pfe.pfe-tcp-header-error-discard;			
                 synopsis "PFE TCP header error discards KPI";
                 description "Sets health based on the change in PFE TCP header error discard count";
                 frequency 1offset;
