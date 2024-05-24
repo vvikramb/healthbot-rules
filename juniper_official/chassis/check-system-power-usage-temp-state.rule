@@ -119,6 +119,7 @@ healthbot {
              * Anomaly detection logic.
              */			
             trigger chassis-temperature {
+                alert-type hardware.temperature.chassis.chassis-temperature;
                 synopsis "Chassis Temperature KPI";
                 description "Sets health based on Chassis Temperature";			
                 frequency 1offset;
@@ -170,6 +171,7 @@ healthbot {
                 }
             }
             trigger system-power-usage {
+                alert-type hardware.power.system.system-power-usage;
                 synopsis "System power usage KPI";
                 description "Sets health based on increasing system power usage";
                 frequency 1offset;

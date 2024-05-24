@@ -183,6 +183,7 @@ healthbot {
              * Anomaly detection logic.
              */			
             trigger psm-power-usage {
+                alert-type hardware.power.psm.psm-power-usage;
                 synopsis "PSM power usage KPI";
                 description "Sets health based on increasing psm power usage";
                 frequency 1offset;
@@ -237,6 +238,7 @@ healthbot {
                 }
             }
             trigger psm-state {
+                alert-type hardware.state.psm.psm-state;			
                 synopsis "PSM State KPI";
                 description "Sets health based on PSM state";
                 frequency 1offset;
@@ -277,6 +279,7 @@ healthbot {
                 }
             }
             trigger psm-temperature {
+                alert-type hardware.temperature.psm.psm-temperature;
                 frequency 1offset;
                 /*
                  * Sets color to green when psm-temperature is lesser than psm-temperature-low-threshold
