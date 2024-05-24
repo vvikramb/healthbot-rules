@@ -196,7 +196,7 @@ healthbot {
                 }
             }
             trigger rpm-percent {
-                alert-type hardware.rpm.fan.fan-state;
+                alert-type hardware.rpm.fan.rpm-percent;
                 synopsis "Fan RPM KPI";
                 description "Sets health based on Fan RPM percentage";			
                 frequency 1offset;

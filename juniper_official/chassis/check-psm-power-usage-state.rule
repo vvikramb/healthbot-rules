@@ -183,7 +183,7 @@ healthbot {
              * Anomaly detection logic.
              */			
             trigger psm-power-usage {
-                alert-type hardware.power.psm.usage.psm-power-usage;
+                alert-type hardware.power.psm.psm-power-usage;
                 synopsis "PSM power usage KPI";
                 description "Sets health based on increasing psm power usage";
                 frequency 1offset;
