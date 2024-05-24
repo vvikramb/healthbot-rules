@@ -101,6 +101,7 @@ healthbot {
              * Anomaly detection logic.
              */
             trigger ntp-sync {
+                alert-type hardware.ntp.ntp-sync;			
                 frequency 1offset;
                 /*
                  * Sets color to red when reference-id is INIT
