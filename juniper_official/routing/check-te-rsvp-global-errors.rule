@@ -207,6 +207,7 @@
              * Anomaly detection logic to detect rsvp-te global errors.
              */
             trigger rsvp-te-global-errors {
+                alert-type routing.rsvp.errors.global.rsvp-te-global-errors;
                 frequency 1offset;
                 term is-authentication-fail {
                     when {

@@ -44,6 +44,7 @@
              * Anomaly detection logic to detect lsp state changes.
              */
             trigger lsp-state {
+                alert-type routing.lsp.state.lsp-state;			
                 frequency 1offset;
                 term lsp-up {
                     when {
@@ -77,6 +78,7 @@
              * Anomaly detection logic to detect lsp flaps.
              */
             trigger lsp-flaps {
+                alert-type routing.lsp.flaps.lsp-flaps;
                 frequency 1offset;
                 term lsp-stable {
                     when {

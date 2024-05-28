@@ -201,6 +201,7 @@ healthbot {
              * Anomaly detection logic to detect rsvp-te interface errors.
              */
             trigger rsvp-te-interface-errors {
+                alert-type routing.rsvp.errors.interface.rsvp-te-interface-errors;
                 frequency 1offset;
                 term is-authentication-fail {
                     when {
