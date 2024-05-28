@@ -126,6 +126,7 @@
              * Anomaly detection logic to detect frame discards
              */
             trigger isis-csnp-drops {
+                alert-type routing.isis.drops.csnp.isis-csnp-drops;
                 synopsis "ISIS csnp drops kpi";
                 description "Sets health based on increase in ISIS session's csnp drop count and notify anomaly";
                 frequency 1offset;
@@ -167,6 +168,7 @@
                 }
             }
             trigger isis-esh-drops {
+                alert-type routing.isis.drops.esh.isis-esh-drops;
                 synopsis "ISIS esh drops kpi";
                 description "Sets health based on increase in ISIS session's esh drop count and notify anomaly";
                 frequency 1offset;
@@ -208,6 +210,7 @@
                 }
             }
             trigger isis-iih-drops {
+                alert-type routing.isis.drops.iih.isis-iih-drops;
                 synopsis "ISIS iih drops kpi";
                 description "Sets health based on increase in ISIS session's iih drop count and notify anomaly";
                 frequency 1offset;
@@ -249,6 +252,7 @@
                 }
             }
             trigger isis-ish-drops {
+                alert-type routing.isis.drops.ish.isis-ish-drops;
                 synopsis "ISIS ish drops kpi";
                 description "Sets health based on increase in ISIS session's ish drop count and notify anomaly";
                 frequency 1offset;
@@ -290,6 +294,7 @@
                 }
             }
             trigger isis-lsp-drops {
+                alert-type routing.isis.drops.lsp.isis-lsp-drops;
                 synopsis "ISIS lsp drops kpi";
                 description "Sets health based on increase in ISIS session's lsp drop count and notify anomaly";
                 frequency 1offset;
@@ -331,6 +336,7 @@
                 }
             }
             trigger isis-psnp-drops {
+                alert-type routing.isis.drops.psnp.isis-psnp-drops;
                 synopsis "ISIS psnp drops kpi";
                 description "Sets health based on increase in ISIS session's psnp drop count and notify anomaly";
                 frequency 1offset;
@@ -372,6 +378,7 @@
                 }
             }
             trigger isis-unknown-drops {
+                alert-type routing.isis.drops.unknown.isis-unknown-drops;
                 synopsis "ISIS unknown drops kpi";
                 description "Sets health based on increase in ISIS session's unknown drop count and notify anomaly";
                 frequency 1offset;

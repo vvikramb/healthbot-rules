@@ -42,6 +42,7 @@
              * Anomaly detection logic.
              */
             trigger ospf-io-errors {
+                alert-type routing.ospf.errors.io.ospf-io-errors;
                 synopsis "ospf io statistics kpi";
                 description "Sets health based on ospf io errors";
                 frequency 1offset;

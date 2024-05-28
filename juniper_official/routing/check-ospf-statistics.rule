@@ -46,6 +46,7 @@
                 description "Hello count threshold";
             }			
             trigger ospf-hello-received {
+                alert-type routing.ospf.hello.received.ospf-hello-received;
                 synopsis "ospf hello received statistics kpi";
                 description "Sets health based on ospf hello received statistics";
                 frequency 1offset;
@@ -80,6 +81,7 @@
                 }
             }
             trigger ospf-hello-sent {
+                alert-type routing.ospf.hello.sent.ospf-hello-sent;
                 synopsis "ospf hello sent statistics kpi";
                 description "Sets health based on ospf hello sent statistics";
                 frequency 1offset;

@@ -59,6 +59,7 @@
              * Anomaly detection logic.
              */
             trigger isis-adjacency-flap {
+                alert-type routing.isis.flaps.isis-adjacency-flap;
                 frequency 1offset;
                 /*
                  * Sets color to green when flap count is not increasing

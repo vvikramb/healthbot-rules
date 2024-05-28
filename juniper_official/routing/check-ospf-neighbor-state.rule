@@ -75,6 +75,7 @@
              * Anomaly detection logic.
              */
             trigger ospf-neighbor-state {
+                alert-type routing.ospf.state.ospf-neighbor-state;
                 synopsis "ospf neigbor state kpi";
                 description "Sets health based on ospf neighbor state";
                 frequency 1offset;
