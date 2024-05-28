@@ -99,6 +99,7 @@
              * Anomaly detection logic.
              */
             trigger isis-adjacency-state {
+                alert-type routing.isis.state.adjacency-state;
                 frequency 1offset;
                 /*
                  * Sets color to green when the adjacency state is up.
