@@ -85,6 +85,7 @@
              * Anomaly detection logic.
              */			
             trigger advertised-routes {
+                alert-type routing.bgp.advertised_routes.advertised-routes;
                 synopsis "BGP max advertised routes KPI";
                 description "Sets health based on increase in advertised routes on neighbor session";
                 frequency 1offset;
@@ -118,6 +119,7 @@
                 }
             }
             trigger received-routes {
+                alert-type routing.bgp.received_routes.received-routes;			
                 synopsis "BGP max received routes KPI";
                 description "Sets health based on increase in received routes on neighbor session";
                 frequency 1offset;

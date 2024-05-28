@@ -54,6 +54,7 @@
                 description "Route count static threshold";
             }
             trigger protocol-routes-count {
+                alert-type routing.rib.protocol.routes.count.protocol-routes-count;
                 frequency 1offset;
                 term protocol-route-count-ok {
                     when {
