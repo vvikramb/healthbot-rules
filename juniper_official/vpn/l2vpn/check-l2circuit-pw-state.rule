@@ -1,0 +1,104 @@
+/*
+ *   This rule collects l2circuit statistics and notifies anomaly when
+ *   connection state is down.
+ *
+ *
+ */
+ healthbot {
+    topic vpn.l2circuit {
+        rule check-l2circuit-pw-state {
+            keys [ neighbor cnx-id ];
+            sensor l2ckt {
+                iAgent {
+                    file L2CircuitConnectionInfo.yml;
+                    table L2CircuitConnectionInfoTable;
+                    frequency 180s;
+                }
+            }
+            field cnx-id {
+                sensor l2ckt {
+                    where "connection-id =~ /{{connection-id}}/";
+                    path connection-id;
+                }
+                type string;
+                description "l2circuit connection ID";
+            }
+            field neighbor {
+                sensor l2ckt {
+                    where "neighbor-address =~ /{{neighbor-address}}/";
+                    path neighbor-address;
+                }
+                type string;
+                description "l2circuit neighbor address";
+            }
+            field connection-status {
+                sensor l2ckt {
+                    path connection-status;
+                }
+                type string;
+                description "l2circuit connection status";
+            }
+            trigger l2circuit-connection-status {
+                frequency 1offset;
+                term is-l2ckt-connection-up {
+                    when {
+                        matches-with "$connection-status" Up {
+                            ignore-case;
+                        }
+                    }
+                    then {
+                        status {
+                            color green;
+                            message "l2circuit neighbor-address:$neighbor connection-id:$cnx-id state is $connection-status";
+                        }
+                    }
+                }
+                term l2ckt-connection-down {
+                    then {
+                        status {
+                            color red;
+                            message "l2circuit neighbor-address:$neighbor connection-id:$cnx-id state is $connection-status";
+                        }
+                    }
+                }
+            }
+            variable neighbor-address {
+                value .*;
+                description "Input l2circuit neighbor-address to be monitored in regex.";
+                type string;
+            }
+            variable connection-id {
+                value .*;
+                description "Input l2circuit connection-id to be monitored in regex.";
+                type string;
+            }
+            rule-properties {
+                version 1;
+                contributor juniper;
+                supported-healthbot-version 4.0.0;
+                supported-devices {
+                    juniper {
+                         operating-system junos {
+                            products MX {
+                                platforms All {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                         }
+                         operating-system junosEvolved {
+                            products ACX {
+                                platforms All {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
