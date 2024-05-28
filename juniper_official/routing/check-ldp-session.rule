@@ -41,6 +41,7 @@
              * Anomaly detection logic.
              */
             trigger ldp-session-state {
+                alert-type routing.ldp.state.ldp-session-state;
                 frequency 1offset;
                 /*
                  * Sets color to green when the session state is operational.
