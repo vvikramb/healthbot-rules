@@ -74,6 +74,7 @@
              * Anomaly detection logic.
              */
             trigger bgp-neighbor-flap {
+                alert-type routing.bgp.flaps.bgp-neighbor-flap;
                 synopsis "BGP neighbor session flaps KPI";
                 description "Sets health based on increase in bgp neighbor session flaps";
                 frequency 1offset;
@@ -115,6 +116,7 @@
                 }				
             }
             trigger bgp-neighbor-status {
+                alert-type routing.bgp.status.bgp-neighbor-status;			
                 frequency 1offset;
                 term neighbor-up {
                     when {

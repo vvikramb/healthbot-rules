@@ -70,6 +70,7 @@
              * Anomaly detection logic.
              */			
             trigger route-table-total-routes-count {
+                alert-type routing.rib.routes.count.route-table-total-routes-count;			
                 frequency 1offset;
                 /*
                  * Sets color to green when route-count is less-than-or-equal-to than threshold

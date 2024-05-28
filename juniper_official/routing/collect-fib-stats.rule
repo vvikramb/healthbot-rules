@@ -58,6 +58,7 @@
              * Anomaly detection logic.
              */			
             trigger fib-route-count {
+                alert-type routing.fib.routes.count.fib-route-count;
                 frequency 1offset;
                 /*
                  * Sets color to green when route-count is less than threshold.
