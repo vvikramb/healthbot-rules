@@ -119,31 +119,37 @@
                                 }
                                 platforms MX240 {
                                     releases 22.3R1 {
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX480 {
                                     releases 22.3R1 {
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX960 {
                                     releases 22.3R1 {
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10004 {
                                     releases 22.3R1 {
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10008 {
                                     releases 22.3R1 {
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10016 {
                                     releases 22.3R1 {
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
@@ -187,6 +193,7 @@
                                 sensors l2ckt;
                                 platforms PTX10008 {
                                     releases 22.2R3 {
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
