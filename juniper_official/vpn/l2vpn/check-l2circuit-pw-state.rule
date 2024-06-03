@@ -99,29 +99,29 @@
                 contributor juniper;
                 supported-healthbot-version 4.3.0;
                 supported-devices {
-                    sensors isis-oc;
+                    sensors l2ckt;
                     juniper {
                         operating-system junos {
-                            sensors isis-oc-junos;
+                            sensors l2ckt;
                             products MX {
-                                sensors isis-oc-junos;
+                                sensors l2ckt;
                                 platforms MX304 {
                                     releases 23.2 {
-                                        sensors isis-oc-junos;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                     releases 22.2 {
-                                        sensors isis-oc;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX204 {
                                     releases 23.2 {
-                                        sensors isis-oc-junos;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                     releases 22.2 {
-                                        sensors isis-oc;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
@@ -129,60 +129,60 @@
                         }
                         operating-system junosEvolved {
                             products ACX {
-                                sensors isis-oc;
+                                sensors l2ckt;
                                 platforms ACX7024 {
                                     releases 23.2R1 {
-                                        sensors isis-oc-junos;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                     releases 22.3R1 {
-                                        sensors isis-oc;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7100 {
                                     releases 23.2R1 {
-                                        sensors isis-oc-junos;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                     releases 22.3R1 {
-                                        sensors isis-oc;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7348 {
                                     releases 23.2R1 {
-                                        sensors isis-oc-junos;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                     releases 22.3R1 {
-                                        sensors isis-oc;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7024X {
                                     releases 23.2R1 {
-                                        sensors isis-oc-junos;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                     releases 22.3R1 {
-                                        sensors isis-oc;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7509 {
                                     releases 23.2R1 {
-                                        sensors isis-oc-junos;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                     releases 22.3R1 {
-                                        sensors isis-oc;
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                             }
                             products PTX {
-                                sensors isis-oc-junos;
+                                sensors l2ckt;
                                 platforms PTX10008 {
                                     releases 22.2R3 {
                                         release-support min-supported-release;
