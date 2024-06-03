@@ -21,7 +21,6 @@ xslt: "<xsl:stylesheet version=\"1.0\"
  <xsl:output omit-xml-declaration=\"yes\" indent=\"yes\"/>
  <xsl:strip-space elements=\"*\"/>
  <ns:WhiteList>
-      <name>connection-id</name>
       <name>connection-status</name>
  </ns:WhiteList>
  <ns:blacklist>

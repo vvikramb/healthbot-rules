@@ -106,22 +106,44 @@
                             products MX {
                                 sensors l2ckt;
                                 platforms MX304 {
-                                    releases 23.2 {
-                                        sensors l2ckt;
-                                        release-support min-supported-release;
-                                    }
                                     releases 22.2 {
                                         sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX204 {
-                                    releases 23.2 {
+                                    releases 22.2 {
                                         sensors l2ckt;
                                         release-support min-supported-release;
                                     }
-                                    releases 22.2 {
-                                        sensors l2ckt;
+                                }
+                                platforms MX240 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX480 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX960 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10004 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10008 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10016 {
+                                    releases 22.3R1 {
                                         release-support min-supported-release;
                                     }
                                 }
@@ -131,50 +153,30 @@
                             products ACX {
                                 sensors l2ckt;
                                 platforms ACX7024 {
-                                    releases 23.2R1 {
-                                        sensors l2ckt;
-                                        release-support min-supported-release;
-                                    }
                                     releases 22.3R1 {
                                         sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7100 {
-                                    releases 23.2R1 {
-                                        sensors l2ckt;
-                                        release-support min-supported-release;
-                                    }
                                     releases 22.3R1 {
                                         sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7348 {
-                                    releases 23.2R1 {
-                                        sensors l2ckt;
-                                        release-support min-supported-release;
-                                    }
                                     releases 22.3R1 {
                                         sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7024X {
-                                    releases 23.2R1 {
-                                        sensors l2ckt;
-                                        release-support min-supported-release;
-                                    }
                                     releases 22.3R1 {
                                         sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7509 {
-                                    releases 23.2R1 {
-                                        sensors l2ckt;
-                                        release-support min-supported-release;
-                                    }
                                     releases 22.3R1 {
                                         sensors l2ckt;
                                         release-support min-supported-release;
