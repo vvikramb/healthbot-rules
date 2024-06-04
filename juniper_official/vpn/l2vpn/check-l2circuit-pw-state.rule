@@ -7,7 +7,7 @@
  healthbot {
     topic vpn.l2circuit {
         rule check-l2circuit-pw-state {
-            keys [ neighbor cnx-id ];
+            keys [ neighbor connection-id ];
             sensor l2ckt {
                 iAgent {
                     file L2CircuitConnectionInfo.yml;
@@ -15,7 +15,7 @@
                     frequency 180s;
                 }
             }
-            field cnx-id {
+            field connection-id {
                 sensor l2ckt {
                     where "connection-id =~ /{{connection-id}}/";
                     path connection-id;
@@ -37,6 +37,28 @@
                 }
                 type string;
                 description "l2circuit connection status";
+                enumerate EI as -13;
+                enumerate MM as -12;
+                enumerate EM as -11;
+                enumerate CM as -10;
+                enumerate VM as -9;
+                enumerate OL as -8;
+                enumerate NC as -7;
+                enumerate BK as -6;
+                enumerate CB as -5;
+                enumerate LD as -4;
+                enumerate RD as -3;
+                enumerate NP as -2;
+                enumerate Dn as 0;
+                enumerate VC-Dn as -1;
+                enumerate UP as 1;
+                enumerate CF as -14;
+                enumerate IB as -15;
+                enumerate TDM as -16;
+                enumerate ST as -17;
+                enumerate SP as -18;
+                enumerate RS as -19;
+                enumerate XX as -20;
             }
             trigger l2circuit-connection-status {
                 frequency 1offset;
@@ -49,7 +71,7 @@
                     then {
                         status {
                             color green;
-                            message "l2circuit neighbor-address:$neighbor connection-id:$cnx-id state is $connection-status";
+                            message "l2circuit neighbor-address:$neighbor connection-id:$connection-id state is $connection-status";
                         }
                     }
                 }
@@ -57,7 +79,7 @@
                     then {
                         status {
                             color red;
-                            message "l2circuit neighbor-address:$neighbor connection-id:$cnx-id state is $connection-status";
+                            message "l2circuit neighbor-address:$neighbor connection-id:$connection-id state is $connection-status";
                         }
                     }
                 }
@@ -75,22 +97,103 @@
             rule-properties {
                 version 1;
                 contributor juniper;
-                supported-healthbot-version 4.0.0;
+                supported-healthbot-version 4.3.0;
                 supported-devices {
+                    sensors l2ckt;
                     juniper {
-                         operating-system junos {
+                        operating-system junos {
+                            sensors l2ckt;
                             products MX {
-                                platforms All {
-                                    releases 15.1R1 {
+                                sensors l2ckt;
+                                platforms MX304 {
+                                    releases 22.2 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX204 {
+                                    releases 22.2 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX240 {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX480 {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX960 {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10004 {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10008 {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10016 {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
                             }
-                         }
-                         operating-system junosEvolved {
+                        }
+                        operating-system junosEvolved {
                             products ACX {
-                                platforms All {
-                                    releases 22.1R1 {
+                                sensors l2ckt;
+                                platforms ACX7024 {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7100 {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7348 {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7024X {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7509 {
+                                    releases 22.3R1 {
+                                        sensors l2ckt;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                            products PTX {
+                                sensors l2ckt;
+                                platforms PTX10008 {
+                                    releases 22.2R3 {
+                                        sensors l2ckt;
                                         release-support min-supported-release;
                                     }
                                 }
