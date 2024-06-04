@@ -7,7 +7,7 @@
  healthbot {
     topic vpn.l2circuit {
         rule check-l2circuit-pw-state {
-            keys [ neighbor cnx-id ];
+            keys [ neighbor connection-id ];
             sensor l2ckt {
                 iAgent {
                     file L2CircuitConnectionInfo.yml;
@@ -15,7 +15,7 @@
                     frequency 180s;
                 }
             }
-            field cnx-id {
+            field connection-id {
                 sensor l2ckt {
                     where "connection-id =~ /{{connection-id}}/";
                     path connection-id;
@@ -71,7 +71,7 @@
                     then {
                         status {
                             color green;
-                            message "l2circuit neighbor-address:$neighbor connection-id:$cnx-id state is $connection-status";
+                            message "l2circuit neighbor-address:$neighbor connection-id:$connection-id state is $connection-status";
                         }
                     }
                 }
@@ -79,7 +79,7 @@
                     then {
                         status {
                             color red;
-                            message "l2circuit neighbor-address:$neighbor connection-id:$cnx-id state is $connection-status";
+                            message "l2circuit neighbor-address:$neighbor connection-id:$connection-id state is $connection-status";
                         }
                     }
                 }
