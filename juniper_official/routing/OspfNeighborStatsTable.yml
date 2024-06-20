@@ -8,7 +8,7 @@ OspfNeighborStatsTable:
   key:
     - interface-name
     - neighbor-id
-    - neighbor-address    
+    - neighbor-address
     - ../ospf-instance-name
   view: OspfNeighborStatsView
 
