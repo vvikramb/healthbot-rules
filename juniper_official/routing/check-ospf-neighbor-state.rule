@@ -61,7 +61,7 @@
                 }
                 type string;
                 description "Ospf neighbor state";
-                enumerate __default__ as -99;
+                enumerate not-available as -99;
                 enumerate Down as -30;
                 enumerate Attempt as -25;
                 enumerate Init as -20;
@@ -89,7 +89,7 @@
                     then {
                         status {
                             color green;
-                            message "OSPF neighbor $neighbor-address state is $ospf-neighbor-state for $instance-name";
+                            message "OSPF neighbor $neighbor-address state is $ospf-neighbor-state on $instance-name routing-instance";
                         }
                     }
                 }
@@ -103,7 +103,7 @@
                     then {
                         status {
                             color red;
-                            message "OSPF neighbor $neighbor-address state is $ospf-neighbor-state for $instance-name";
+                            message "OSPF neighbor $neighbor-address state is $ospf-neighbor-state on $instance-name routing-instance";
                         }
                     }
                 }
