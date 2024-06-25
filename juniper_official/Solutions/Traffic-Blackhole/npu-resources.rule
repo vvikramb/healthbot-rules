@@ -54,6 +54,18 @@ healthbot {
 										release-support min-supported-release;
 									}
 								}
+								platforms PTX10002-36QDD {
+									releases 23.4R2 {
+										release-support min-supported-release;
+									}
+								}
+							}
+							products MX {
+								platforms MX204 {
+									releases 22.1R1 {
+										release-support min-supported-release;
+									}
+								}
 							}
 							products ACX {
 						                platforms All {

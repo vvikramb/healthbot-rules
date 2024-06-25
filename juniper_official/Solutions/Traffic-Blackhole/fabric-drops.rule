@@ -1,0 +1,115 @@
+/*
+ * Rule to get all the Fabric Drops
+ * Upstream application will use these stats to find Blackholes
+ */
+healthbot {
+    topic hardware.fpc {
+        rule fabric-drops {
+            keys [ src-slot src-pfe src-type dst-slot dst-pfe dst-type ];
+            synopsis "Fabric Drops";
+            description "Fabric Drops";
+            sensor sensor-fabric-drops {
+                synopsis "Fabric Drops";
+                description "Fabric Drops";
+                open-config {
+                    sensor-name /junos/system/linecard/fabric/;
+                    frequency 60s;
+                }
+            }
+            field src-slot {
+                sensor sensor-fabric-drops {
+                    path "/junos/fabric-statistics/fabric-message/edges/@src-slot";
+                }
+                type string;
+                description "Source FPC";
+            }
+            field src-pfe {
+                sensor sensor-fabric-drops {
+                    path "/junos/fabric-statistics/fabric-message/edges/@src-pfe";
+                }
+                type string;
+                description "Source PFE";
+            }
+            field src-type {
+                sensor sensor-fabric-drops {
+                    path "/junos/fabric-statistics/fabric-message/edges/@src-type";
+                }
+                type string;
+                description "Source Type";
+            }
+            field dst-slot {
+                sensor sensor-fabric-drops {
+                    path "/junos/fabric-statistics/fabric-message/edges/@dst-slot";
+                }
+                type string;
+                description "Destination FPC";
+            }
+            field dst-pfe {
+                sensor sensor-fabric-drops {
+                    path "/junos/fabric-statistics/fabric-message/edges/@dst-pfe";
+                }
+                type string;
+                description "Destination PFE";
+            }
+            field dst-type {
+                sensor sensor-fabric-drops {
+                    path "/junos/fabric-statistics/fabric-message/edges/@dst-type";
+                }
+                type string;
+                description "Destination Type";
+            }
+            field drop-packets {
+                sensor sensor-fabric-drops {
+                    path /junos/fabric-statistics/fabric-message/edges/class-stats/transmit-counts/drop-packets;
+                }
+                type unsigned-integer;
+                description "Drop Packets";
+            }
+            field error-packets {
+                sensor sensor-fabric-drops {
+                    path /junos/fabric-statistics/fabric-message/edges/class-stats/transmit-counts/error-packets;
+                }
+                type unsigned-integer;
+                description "Drop Packets";
+            }
+            rule-properties {
+                version 1;
+                contributor juniper;
+                category basic;
+                supported-healthbot-version 1.0.0;
+                supported-devices {
+                    juniper {
+                        operating-system junosEvolved {
+                            products PTX {
+                                platforms PTX10008 {
+                                    releases 22.2R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms PTX10002-36QDD {
+                                    releases 23.4R2 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                            products MX {
+                                platforms MX204 {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                            products ACX {
+                                platforms All {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

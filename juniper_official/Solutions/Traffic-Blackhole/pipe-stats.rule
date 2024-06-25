@@ -9,8 +9,8 @@ healthbot {
             synopsis "PFE ASIC drops";
             description "PFE ASIC drops from interface, fabric, lookup, host and Queuing blocks";
             sensor pipestats {
-		synopsis "PFE ASIC drops definition";
-		description "GNMI based telemetry which collects ASIC drops from interface, fabric, lookup, host and Queuing blocks";
+                synopsis "PFE ASIC drops definition";
+                description "GNMI based telemetry which collects ASIC drops from interface, fabric, lookup, host and Queuing blocks";
                 open-config {
                     sensor-name /components/component/integrated-circuit/pipeline-counters;
                     frequency 60s;
@@ -70,7 +70,7 @@ healthbot {
                     path "/components/component/@name";
                 }
                 type string;
-		description "FPC name";
+                description "FPC name";
             }
             field host-interface-block-fragment-punt {
                 sensor pipestats {
@@ -275,14 +275,26 @@ healthbot {
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms PTX10002-36QDD {
+                                    releases 23.4R2 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                            products MX {
+                                platforms MX204 {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
                             }
                             products ACX {
-		                platforms All {
-                  		    releases 22.3R1 {
-                    			release-support min-supported-release;
-                  		    }
-                		}
-              		    }
+                                platforms All {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
                         }
                     }
                 }

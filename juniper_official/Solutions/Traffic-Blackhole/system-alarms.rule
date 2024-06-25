@@ -1,0 +1,100 @@
+/*
+	* Rule to collect System Alarms for Blackhole Detection RCA.
+*/
+healthbot {
+	topic hardware.fpc {
+		rule system-alarms {
+			keys [ resource id ];
+			synopsis "System Alarms";
+			description "System Alarms";
+			sensor sensor-system-alarms {
+				synopsis "System Alarms";
+				description "System Alarms";
+				open-config {
+					sensor-name /system/alarms/alarm/;
+					frequency 60s;
+				}
+			}
+			field resource {
+				sensor sensor-system-alarms {
+					path "/system/alarms/alarm/state/resource";
+				}
+				type string;
+				description "Alarm Resource";
+			}
+			field id {
+				sensor sensor-system-alarms {
+					path "/system/alarms/alarm/state/id";
+				}
+				type string;
+				description "Alarm ID";
+			}
+			field type-id {
+				sensor sensor-system-alarms {
+					path "/system/alarms/alarm/state/type-id";
+				}
+				type string;
+				description "Alarm Type";
+			}
+			field time-created {
+				sensor sensor-system-alarms {
+					path "/system/alarms/alarm/state/time-created";
+				}
+				type unsigned-integer;
+				description "Time Created";
+			}
+			field text {
+				sensor sensor-system-alarms {
+					path "/system/alarms/alarm/state/text";
+				}
+				type string;
+				description "Alarm Test";
+			}
+			field severity {
+				sensor sensor-system-alarms {
+					path "/system/alarms/alarm/state/severity";
+				}
+				type string;
+				description "Alarm Severity";
+			}
+			rule-properties {
+				version 1;
+				contributor juniper;
+				category advanced;
+				supported-healthbot-version 4.2.0;
+				supported-devices {
+					juniper {
+						operating-system junosEvolved {
+							products PTX {
+								platforms PTX10008 {
+									releases 22.2R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms PTX10002-36QDD {
+									releases 23.4R2 {
+										release-support min-supported-release;
+									}
+								}
+							}
+							products MX {
+								platforms MX204 {
+									releases 22.1R1 {
+										release-support min-supported-release;
+									}
+								}
+							}
+							products ACX {
+								platforms All {
+									releases 22.3R1 {
+										release-support min-supported-release;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
