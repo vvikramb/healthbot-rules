@@ -43,10 +43,6 @@ healthbot {
             field measurements {
                 sensor fan-netconf {
                     path measurement;
-                    zero-suppression;
-                    data-if-missing {
-                        value 0;
-                    }					
                 }
                 type string;
                 description "RPM String Value";				
@@ -64,10 +60,6 @@ healthbot {
             field rpm-percents {
                 sensor fan-netconf {
                     path rpm;
-                    zero-suppression;
-                    data-if-missing {
-                        value 0;
-                    }
                 }
                 type string;
                 description "RPM string percentage";
