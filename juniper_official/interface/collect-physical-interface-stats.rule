@@ -88,8 +88,7 @@ healthbot {
                     }
                 }
                 type integer;
-            }  
-
+            }
             variable input-ifd-name {
                 value .*;
                 description "interface names to monitor, regular expression, eg 'ge-.*'";
