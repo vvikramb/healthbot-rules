@@ -1,0 +1,180 @@
+/*
+ * Collect Physical Interface traffic stats.
+ *
+ */
+ healthbot {
+    topic interfaces {
+        rule collect-physical-interface-stats {
+            keys interface-name;
+            synopsis "Physical Interface traffic stats collector";
+            description "Collects physical interface traffic stats periodically";
+            sensor interfaces-oc {
+			    synopsis "Interface open-config sensor definition";
+                description "Interfaces open-config sensor to collect telemetry data from network device";
+                open-config {
+                    sensor-name/interfaces/interface/state;
+                    frequency 60s;
+                }
+            }
+            field interface-name {
+                sensor interfaces-oc {
+                    where "/interfaces/interface/@name =~ /{{input-ifd-name}}/";
+                    path "/interfaces/interface/@name"
+                }
+                type string;
+                description "Interface name to be monitored";
+            }
+            field ifd-egress-octets {
+                sensor interfaces-oc {
+                    path /interfaces/interface/state/counters/out-octets;
+                }
+                type integer;
+                description "Interface egress octets counter";	
+            }
+			field ifd-egress-bps {
+                formula {
+                    rate-of-change {
+                        field-name "ifd-egress-octets";
+                        multiplication-factor 8;
+                    }
+                }
+                type integer;
+            }
+			
+            field ifd-egress-packets {
+                sensor interfaces-oc {
+                    path /interfaces/interface/state/counters/out-pkts;
+                }
+                type integer;
+                description "Interface egress packets counter";	
+            }
+			field ifd-egress-pps {
+                formula {
+                    rate-of-change {
+                        field-name "ifd-egress-packets";
+                    }
+                }
+                type integer;
+            }
+			
+            field ifd-ingress-octets {
+                sensor interfaces-oc {
+                    path /interfaces/interface/state/counters/in-octets;
+                }
+                type integer;
+                description "Interface ingress octets counter";	
+            }
+			field ifd-ingress-bps {
+                formula {
+                    rate-of-change {
+                        field-name "ifd-ingress-octets";
+                        multiplication-factor 8;
+                    }
+                }
+                type integer;
+            }
+			
+            field ifd-ingress-packets {
+                sensor interfaces-oc {
+                    path /interfaces/interface/state/counters/in-pkts;
+                }
+                type integer;
+                description "Interface ingress packets counter";	
+            }
+			field ifd-ingress-pps {
+                formula {
+                    rate-of-change {
+                        field-name "ifd-ingress-packets";
+                    }
+                }
+                type integer;
+            }  
+
+            variable input-ifd-name {
+                value .*;
+                description "interface names to monitor, regular expression, eg 'ge-.*'";
+                type string;
+            }
+            rule-properties {
+                version 1;
+                contributor juniper;
+                category basic;
+                is-scaling-rule {
+                    description "Fields:interface-name ; Directly impacted by number of interfaces in each network device";
+                }
+                supported-healthbot-version 4.2.0;
+                supported-devices {
+                    juniper {
+                        operating-system junos {
+                            products MX {
+                                platforms MX2010 {
+                                    releases 17.4R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX2020 {
+                                    releases 17.4R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX240 {
+                                    releases 17.4R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX480 {
+                                    releases 17.4R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX960 {
+                                    releases 17.4R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                            products PTX {
+                                platforms PTX1000 {
+                                    releases 17.4R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms PTX10000 {
+                                    releases 17.4R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms PTX5000 {
+                                    releases 17.4R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                            products QFX {
+                                platforms QFX10000 {
+                                    releases 17.4R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms QFX5200 {
+                                    releases 17.4R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                        }
+                        operating-system junosEvolved {
+                            products ACX {
+                                platforms All {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                        }						
+                    }
+                }
+            }
+        }
+    }
+}
