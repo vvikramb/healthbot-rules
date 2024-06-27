@@ -2,7 +2,7 @@
  * Collect Physical Interface traffic stats.
  *
  */
- healthbot {
+healthbot {
     topic interfaces {
         rule collect-physical-interface-stats {
             keys interface-name;
