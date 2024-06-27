@@ -2,7 +2,7 @@
  * Collect RSVP LSP traffic.
  *
  */
- healthbot {
+healthbot {
     topic routing.mpls {
         rule collect-rsvp-stats {
             keys lsp-name;
