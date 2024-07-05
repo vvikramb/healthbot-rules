@@ -1,16 +1,24 @@
 /*
- * Collect RSVP LSP traffic.
+ * Collect RSVP LSP traffic statistics for pathfinder dynamic topology.
+ *
+ * Req 60: https://paragon-automation.atlassian.net/browse/REQ-60
+ *
+ * One input control detection
+ *
+ *   1) input-lsp-name, is a regular expression that matches the lsp name
+ *      that you would like to monitor.  By default it's '.*', which matches
+ *      all lsps. Use something like 'Silver*' to match only lsp names starting
+ *      with 'Silver'. 
  *
  */
-healthbot {
+ healthbot {
     topic routing.mpls {
         rule collect-rsvp-stats {
             keys lsp-name;
-            synopsis "RSVP LSP traffic collector";
-            description "Collects RSVP LSP stats periodically";
+            description "Collects LSP stats periodically";
             sensor lsp {
                 open-config {
-                    sensor-name /junos/services/label-switched-path/usage;
+                    sensor-name /junos/services/label-switched-path/usage/;
                     frequency 60s;
                 }
             }
@@ -22,48 +30,44 @@ healthbot {
                 type string;
                 description "LSP name to be monitored";
             }
+            field lsp-stats-bps {
+                formula {
+                    rate-of-change {
+                        field-name "$lsp-stats-bytes";
+                        multiplication-factor 8;
+                    }
+                }
+                type integer;
+            }
             field lsp-stats-bytes {
                 sensor lsp {
                     path /mpls/lsps/constrained-path/tunnels/tunnel/state/counters/bytes;
                 }
                 type integer;
-                description "LSP bytes counter";	
+                description "LSP bytes counter";
             }
-			field lsp-stats-bps {
-                formula {
-                    rate-of-change {
-                        field-name "lsp-stats-bytes";
-                        multiplication-factor 8;
-                    }
+            field lsp-stats-counter {
+                sensor lsp {
+                    path /mpls/lsps/constrained-path/tunnels/tunnel/state/counters/name;
                 }
-                type integer;
+                type string;
+                description "LSP counter name";
             }
-			
             field lsp-stats-packets {
                 sensor lsp {
                     path /mpls/lsps/constrained-path/tunnels/tunnel/state/counters/packets;
                 }
                 type integer;
-                description "LSP packets counter";	
+                description "LSP packet counter";
             }
-			field lsp-stats-pps {
+            field lsp-stats-pps {
                 formula {
                     rate-of-change {
-                        field-name "lsp-stats-packets";
-                        multiplication-factor 8;
+                        field-name "$lsp-stats-packets";
                     }
                 }
                 type integer;
             }
-			
-			field lsp-stats-counter {
-                sensor lsp {
-                    path /mpls/lsps/constrained-path/tunnels/tunnel/state/counters/name;
-                }
-                type string;
-                description "LSP countert name";
-            }        
-
             variable input-lsp-name {
                 value .*;
                 description "LSP names to monitor, regular expression, eg 'LSP-1.*|LSP-A.*'";
@@ -76,33 +80,48 @@ healthbot {
                 is-scaling-rule {
                     description "Fields:lsp-name ; Directly impacted by number of lsp's running in each network device";
                 }
-                supported-healthbot-version 4.2.0;
+                supported-healthbot-version 2.1.0;
                 supported-devices {
                     juniper {
                         operating-system junos {
                             products MX {
                                 platforms MX2010 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX2020 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+								platforms MX10004 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10008 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10016 {
+                                    releases 22.3R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX240 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX480 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX960 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
@@ -114,7 +133,7 @@ healthbot {
                                     }
                                 }
                                 platforms PTX10000 {
-                                    releases 17.4R1 {
+                                    releases 19.411 {
                                         release-support min-supported-release;
                                     }
                                 }
@@ -126,26 +145,53 @@ healthbot {
                             }
                             products QFX {
                                 platforms QFX10000 {
-                                    releases 17.4R1 {
+                                    releases 17.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms QFX5200 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                             }
                         }
                         operating-system junosEvolved {
-                            products ACX {
-                                platforms All {
+                           products ACX {
+                                platforms ACX7024 {
                                     releases 22.3R1 {
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms ACX7024X {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7100 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7509 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7348 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
                             }
-                        }						
+							products PTX {
+                                platforms PTX10008 {
+                                    releases 22.2R3 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
