@@ -1,5 +1,8 @@
 /*
- * Collect Logical Interface traffic stats.
+ * Collect Logical Interface traffic statistics for pathfinder dynamic topology.
+ *
+ * Req 60: https://paragon-automation.atlassian.net/browse/REQ-60
+ *
  * Two inputs control detection
  *
  *   1) input-ifd-name, is a regular expression that matches the interfaces
@@ -12,53 +15,20 @@
  *      interfaces. Use something like '0-10*' to match only 0 to 10 IFLs.
  *
  */
-healthbot {
+ healthbot {
     topic interfaces {
-        rule collect-logical-interface-stats {
-            keys [interface-name sub-interface-index];
-            synopsis "Logical Interface traffic stats collector";
+		rule collect-logical-interface-stats {
+            keys [ ifl-name interface-name sub-interface-index ];
             description "Collects logical interface traffic stats periodically";
             sensor interfaces-oc {
-			    synopsis "Sub Interface open-config sensor definition";
+                synopsis "Sub Interface open-config sensor definition";
                 description "Sub Interfaces open-config sensor to collect telemetry data from network device";
                 open-config {
-                    sensor-name/interfaces/interface/subinterfaces/subinterface/state;
+                    sensor-name /interfaces/interface/subinterfaces/subinterface/state;
                     frequency 60s;
                 }
             }
-            field interface-name {
-                sensor interfaces-oc {
-                    where "/interfaces/interface/@name =~ /{{input-ifd-name}}/";
-                    path "/interfaces/interface/@name"
-                }
-                type string;
-                description "Interface name to be monitored";
-            }
-			field sub-interface-index {
-                sensor interfaces-oc {
-                    where "/interfaces/interface/subinterfaces/subinterface/@index =~ /{{input-ifl-no}}/";
-                    path "/interfaces/interface/subinterfaces/subinterface/@index";
-                }
-                type string;
-                description "Subinterface to be monitored";
-            }
-			field ifl-name {
-                formula: {
-					concatenate: {
-						strings: [ "%interface-name" "." "$sub-interface-index" ]
-                   }
-                },
-                type string;
-                description "IFL name, used as key to calculate BPS/PPS data";
-            }
-            field ifl-egress-octets {
-                sensor interfaces-oc {
-                    path /interfaces/interface/subinterfaces/subinterface/state/counters/out-octets;
-                }
-                type integer;
-                description "Subinterface egress octets counter";	
-            }
-			field ifl-egress-bps {
+            field ifl-egress-bps {
                 formula {
                     rate-of-change {
                         field-name "$ifl-egress-octets";
@@ -67,15 +37,21 @@ healthbot {
                 }
                 type integer;
             }
-			
+            field ifl-egress-octets {
+                sensor interfaces-oc {
+                    path /interfaces/interface/subinterfaces/subinterface/state/counters/out-octets;
+                }
+                type integer;
+                description "Subinterface egress octets";
+            }
             field ifl-egress-packets {
                 sensor interfaces-oc {
                     path /interfaces/interface/subinterfaces/subinterface/state/counters/out-pkts;
                 }
                 type integer;
-                description "Subinterface egress packets counter";	
+                description "Subinterface egress packets";
             }
-			field ifl-egress-pps {
+            field ifl-egress-pps {
                 formula {
                     rate-of-change {
                         field-name "$ifl-egress-packets";
@@ -83,15 +59,7 @@ healthbot {
                 }
                 type integer;
             }
-			
-            field ifl-ingress-octets {
-                sensor interfaces-oc {
-                    path /interfaces/interface/subinterfaces/subinterface/state/counters/in-octets;
-                }
-                type integer;
-                description "Subinterface ingress octets counter";	
-            }
-			field ifl-ingress-bps {
+            field ifl-ingress-bps {
                 formula {
                     rate-of-change {
                         field-name "$ifl-ingress-octets";
@@ -100,30 +68,60 @@ healthbot {
                 }
                 type integer;
             }
-			
+            field ifl-ingress-octets {
+                sensor interfaces-oc {
+                    path /interfaces/interface/subinterfaces/subinterface/state/counters/in-octets;
+                }
+                type integer;
+                description "Subinterface ingress octets";
+            }
             field ifl-ingress-packets {
                 sensor interfaces-oc {
                     path /interfaces/interface/subinterfaces/subinterface/state/counters/in-pkts;
                 }
                 type integer;
-                description "Subinterface ingress packets counter";	
+                description "Subinterface ingress packets";
             }
-			field ifl-ingress-pps {
+            field ifl-ingress-pps {
                 formula {
                     rate-of-change {
                         field-name "$ifl-ingress-packets";
                     }
                 }
                 type integer;
-            }  
-
+            }
+            field ifl-name {
+                formula {
+                    concatenate {
+                        strings [ "$interface-name" . "$sub-interface-index" ];
+                    }
+                }
+                type string;
+                description "IFL name, used as key to calculate BPS/PPS data";
+            }
+            field interface-name {
+                sensor interfaces-oc {
+                    where "/interfaces/interface/@name =~ /{{input-ifd-name}}/";
+                    path "/interfaces/interface/@name";
+                }
+                type string;
+                description "Interfaces to be monitored";
+            }
+            field sub-interface-index {
+                sensor interfaces-oc {
+                    where "/interfaces/interface/subinterfaces/subinterface/@index =~ /{{input-ifl-no}}/";
+                    path "/interfaces/interface/subinterfaces/subinterface/@index";
+                }
+                type string;
+                description "Interfaces to be monitored";
+            }
             variable input-ifd-name {
                 value .*;
-                description "interface names to monitor, regular expression, eg 'ge-.*'";
+                description "Interfaces to be monitored, regular expression, eg 'ge-.*'";
                 type string;
             }
-			variable input-ifl-no {
-                value ".*";
+            variable input-ifl-no {
+                value .*;
                 description "Sub interfaces index to be monitored, regular expression, eg '0-10'";
                 type string;
             }
@@ -132,35 +130,86 @@ healthbot {
                 contributor juniper;
                 category basic;
                 is-scaling-rule {
-                    description "Fields:interface-name ; Directly impacted by number of interfaces in each network device";
+                    description "Fields: interface-name ; Directly impacted by number of interfaces and IFLs in each network device";
                 }
                 supported-healthbot-version 4.2.0;
                 supported-devices {
                     juniper {
-                        operating-system junos {
+                        operating-system junosEvolved {
+                            products ACX {
+                                platforms ACX7024 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7024X {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7100 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7509 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7348 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                            }
+							products PTX {
+                                platforms PTX10008 {
+                                    releases 22.2R3 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                        }
+						operating-system junos {
                             products MX {
-                                platforms MX2010 {
-                                    releases 17.4R1 {
+                               platforms MX2010 {
+                                    releases 19.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX2020 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+								platforms MX10004 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10008 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10016 {
+                                    releases 22.3R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX240 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX480 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX960 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
@@ -172,7 +221,7 @@ healthbot {
                                     }
                                 }
                                 platforms PTX10000 {
-                                    releases 17.4R1 {
+                                    releases 19.411 {
                                         release-support min-supported-release;
                                     }
                                 }
@@ -184,26 +233,17 @@ healthbot {
                             }
                             products QFX {
                                 platforms QFX10000 {
-                                    releases 17.4R1 {
+                                    releases 17.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms QFX5200 {
-                                    releases 17.4R1 {
+                                    releases 19.2R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                             }
                         }
-                        operating-system junosEvolved {
-                            products ACX {
-                                platforms All {
-                                    releases 22.3R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                            }
-                        }						
                     }
                 }
             }
