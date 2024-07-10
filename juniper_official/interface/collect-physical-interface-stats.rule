@@ -23,64 +23,64 @@
                     frequency 60s;
                 }
             }
-            field ifd-egress-bps {
+            field out-bps {
                 formula {
                     rate-of-change {
-                        field-name "$ifd-egress-octets";
+                        field-name "$out-octets";
                         multiplication-factor 8;
                     }
                 }
                 type integer;
             }
-            field ifd-egress-octets {
+            field out-octets {
                 sensor interfaces-oc {
                     path /interfaces/interface/state/counters/out-octets;
                 }
                 type integer;
                 description "Interface egress octets counter";
             }
-            field ifd-egress-packets {
+            field out-pkts {
                 sensor interfaces-oc {
                     path /interfaces/interface/state/counters/out-pkts;
                 }
                 type integer;
                 description "Interface egress packets counter";
             }
-            field ifd-egress-pps {
+            field out-pps {
                 formula {
                     rate-of-change {
-                        field-name "$ifd-egress-packets";
+                        field-name "$out-pkts";
                     }
                 }
                 type integer;
             }
-            field ifd-ingress-bps {
+            field in-bps {
                 formula {
                     rate-of-change {
-                        field-name "$ifd-ingress-octets";
+                        field-name "$in-octets";
                         multiplication-factor 8;
                     }
                 }
                 type integer;
             }
-            field ifd-ingress-octets {
+            field in-octets {
                 sensor interfaces-oc {
                     path /interfaces/interface/state/counters/in-octets;
                 }
                 type integer;
                 description "Interface ingress octets";
             }
-            field ifd-ingress-packets {
+            field in-pkts {
                 sensor interfaces-oc {
                     path /interfaces/interface/state/counters/in-pkts;
                 }
                 type integer;
                 description "Interface ingress packets";
             }
-            field ifd-ingress-pps {
+            field in-pps {
                 formula {
                     rate-of-change {
-                        field-name "$ifd-ingress-packets";
+                        field-name "$in-pkts";
                     }
                 }
                 type integer;
@@ -136,7 +136,7 @@
                                     }
                                 }								
                             }
-							products PTX {
+                            products PTX {
                                 platforms PTX10008 {
                                     releases 22.2R3 {
                                         release-support min-supported-release;

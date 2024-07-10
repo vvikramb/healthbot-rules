@@ -18,7 +18,7 @@
  healthbot {
     topic interfaces {
 		rule collect-logical-interface-stats {
-            keys [ ifl-name interface-name sub-interface-index ];
+            keys [ interface-name sub-interface-index ];
             description "Collects logical interface traffic stats periodically";
             sensor interfaces-oc {
                 synopsis "Sub Interface open-config sensor definition";
@@ -28,76 +28,67 @@
                     frequency 60s;
                 }
             }
-            field ifl-egress-bps {
+            field out-bps {
                 formula {
                     rate-of-change {
-                        field-name "$ifl-egress-octets";
+                        field-name "$out-octets";
                         multiplication-factor 8;
                     }
                 }
                 type integer;
             }
-            field ifl-egress-octets {
+            field out-octets {
                 sensor interfaces-oc {
                     path /interfaces/interface/subinterfaces/subinterface/state/counters/out-octets;
                 }
                 type integer;
                 description "Subinterface egress octets";
             }
-            field ifl-egress-packets {
+            field out-pkts {
                 sensor interfaces-oc {
                     path /interfaces/interface/subinterfaces/subinterface/state/counters/out-pkts;
                 }
                 type integer;
                 description "Subinterface egress packets";
             }
-            field ifl-egress-pps {
+            field out-pps {
                 formula {
                     rate-of-change {
-                        field-name "$ifl-egress-packets";
+                        field-name "$out-pkts";
                     }
                 }
                 type integer;
             }
-            field ifl-ingress-bps {
+            field in-bps {
                 formula {
                     rate-of-change {
-                        field-name "$ifl-ingress-octets";
+                        field-name "$in-octets";
                         multiplication-factor 8;
                     }
                 }
                 type integer;
             }
-            field ifl-ingress-octets {
+            field in-octets {
                 sensor interfaces-oc {
                     path /interfaces/interface/subinterfaces/subinterface/state/counters/in-octets;
                 }
                 type integer;
                 description "Subinterface ingress octets";
             }
-            field ifl-ingress-packets {
+            field in-pkts {
                 sensor interfaces-oc {
                     path /interfaces/interface/subinterfaces/subinterface/state/counters/in-pkts;
                 }
                 type integer;
                 description "Subinterface ingress packets";
             }
-            field ifl-ingress-pps {
+            field in-pps {
                 formula {
                     rate-of-change {
-                        field-name "$ifl-ingress-packets";
+                        field-name "$in-pkts";
                     }
                 }
                 type integer;
-            }
-            field ifl-name {
-                formula {
-                    concatenate {
-                        strings [ "$interface-name" . "$sub-interface-index" ];
-                    }
-                }
-                type string;
-                description "IFL name, used as key to calculate BPS/PPS data";
             }
             field interface-name {
                 sensor interfaces-oc {
