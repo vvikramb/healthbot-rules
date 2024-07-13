@@ -143,18 +143,6 @@
                                     }
                                 }
                             }
-                            products QFX {
-                                platforms QFX10000 {
-                                    releases 17.2R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                                platforms QFX5200 {
-                                    releases 19.2R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                            }
                         }
                         operating-system junosEvolved {
 							products PTX {
