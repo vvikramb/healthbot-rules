@@ -14,7 +14,7 @@
  healthbot {
     topic routing.mpls {
         rule collect-rsvp-stats {
-            keys lsp-name;
+            keys [ lsp-name lsp-stats-counter ];
             description "Collects LSP stats periodically";
             sensor lsp {
                 open-config {
@@ -126,26 +126,24 @@
                                     }
                                 }
                             }
-                            products PTX {
-                                platforms PTX1000 {
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                                platforms PTX10000 {
-                                    releases 19.411 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                                platforms PTX5000 {
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                            }
                         }
                         operating-system junosEvolved {
 							products PTX {
+                                platforms PTX10001 {
+                                    releases 22.2R3 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms PTX10004 {
+                                    releases 22.2R3 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms PTX10016 {
+                                    releases 22.2R3 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
                                 platforms PTX10008 {
                                     releases 22.2R3 {
                                         release-support min-supported-release;
