@@ -8,6 +8,8 @@ EvpnLFMTable:
 EvpnLFMTableView:
     fields:
         lfmd-discovery-state: lfmd-discovery-state
+        lfmd-status: lfmd-status
+        lfmd-peer-address: lfmd-peer-address
 
 xslt: "<xsl:stylesheet version=\"1.0\"
  xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"
@@ -17,6 +19,8 @@ xslt: "<xsl:stylesheet version=\"1.0\"
  <ns:WhiteList>
       <name>lfmd-interface-name</name>
       <name>lfmd-discovery-state</name>
+      <name>lfmd-status</name>
+      <name>lfmd-peer-address</name>
  </ns:WhiteList>
  <ns:blacklist>
  </ns:blacklist>

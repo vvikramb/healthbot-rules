@@ -39,6 +39,8 @@ healthbot {
                 }
                 type string;
                 description "Local interface LLDP state";
+                enumerate false as 0;
+                enumerate true as 1;
             }
             field interface-name {
                 sensor lldp-sensor {
@@ -54,6 +56,22 @@ healthbot {
                 }
                 type string;
                 description "LLDP neighbor state";
+                enumerate false as 0;
+                enumerate true as 1;
+            }
+            field neighbor-system-name {
+                sensor lldp-sensor {
+                    path /lldp/interfaces/interface/neighbors/neighbor/state/system-name;
+                }
+                type string;
+                description "LLDP neighbor system name";
+            }
+            field neighbor-mac-id {
+                sensor lldp-sensor {
+                    path /lldp/interfaces/interface/neighbors/neighbor/state/chassis-id;
+                }
+                type string;
+                description "LLDP neighbor chassis id";
             }
             /*
              * Anomaly detection logic.
@@ -73,7 +91,7 @@ healthbot {
                     then {
                         status {
                             color green;
-                            message "Interface $interface-name lldp session is up";
+                            message "LLDP interface $interface-name status is Up, neighbor details: system:$neighbor-system-name, mac:$neighbor-mac-id";
                         }
                     }
                 }

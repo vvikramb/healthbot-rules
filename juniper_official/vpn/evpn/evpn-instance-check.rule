@@ -30,6 +30,8 @@
                 }
                 type string;
                 description "Mode of evpn Interface";
+                enumerate single-homed as 0;
+                enumerate single-active as 1;
             }
             field evpn-interface-name {
                 sensor evpn {
@@ -45,6 +47,8 @@
                 }
                 type string;
                 description "Instance state";
+                enumerate Protect-inactive as 0;
+                enumerate Protect-active as 1;
             }
             trigger evpn-instance-state {
                 frequency 1offset;
