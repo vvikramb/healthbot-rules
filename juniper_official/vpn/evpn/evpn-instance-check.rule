@@ -30,8 +30,8 @@
                 }
                 type string;
                 description "Mode of evpn Interface";
-                enumerate single-homed as 0;
-                enumerate single-active as 1;
+                enumerate single-homed as 1;
+                enumerate single-active as 2;
             }
             field evpn-interface-name {
                 sensor evpn {

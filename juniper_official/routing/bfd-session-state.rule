@@ -35,7 +35,7 @@ healthbot {
                 }
                 type string;
                 description "BFD session state";
-                enumerate Failing as -1;
+                enumerate Failing as -2;
                 enumerate Init as -1;
                 enumerate Down as 0;
                 enumerate Up as 1;

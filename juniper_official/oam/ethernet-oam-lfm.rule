@@ -29,7 +29,7 @@ healthbot {
                 description "Discovery state for a given interface";
                 enumerate Passive Wait as 0;
                 enumerate Send Any as 1;
-                enumerate Send Local Remote as 1;
+                enumerate Send Local Remote as 2;
                 enumerate Send Local Remote Ok as 3;
             }
             field lfmd-status {

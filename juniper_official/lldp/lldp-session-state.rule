@@ -67,7 +67,7 @@ healthbot {
                     then {
                         status {
                             color green;
-                            message "LLDP interface $interface-name status is Up";
+                            message "LLDP status on interface $interface-name is UP";
                         }
                     }
                 }
@@ -78,7 +78,7 @@ healthbot {
                     then {
                         status {
                             color red;
-                            message "Interface-$interface-name lldp session down";
+                            message "Interface $interface-name lldp session down";
                         }
                     }
                 }
