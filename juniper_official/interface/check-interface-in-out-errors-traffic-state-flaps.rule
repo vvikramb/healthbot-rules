@@ -150,7 +150,8 @@ healthbot {
                 description "Interfaces link operational status";
                 enumerate __default__ as -1;
                 enumerate DOWN as 0;
-                enumerate UP as 1;				
+                enumerate UP as 1;
+                enumerate LOWER_LAYER_DOWN as -10;				
             }
             field low-threshold {
                 constant {
