@@ -328,6 +328,7 @@
              * Anomaly detection logic to detect rsvp-te global errors.
              */
             trigger rsvp-te-authentication-fail-errors {
+                alert-type routing.rsvp.errors.rsvp-te-authentication-fail-errors;			
                 frequency 1offset;
                 term is-authentication-fail {
                     when {
@@ -354,6 +355,7 @@
                 }
             }
             trigger rsvp-te-bad-checksum-errors {
+                alert-type routing.rsvp.errors.rsvp-te-bad-checksum-errors;			
                 frequency 1offset;			
                 term is-bad-checksum {
                     when {
@@ -380,6 +382,7 @@
                 }
             }
             trigger rsvp-te-bad-packet-format-errors {
+                alert-type routing.rsvp.errors.rsvp-te-bad-packet-format-errors;			
                 frequency 1offset;			
                 term is-bad-packet-format {
                     when {
@@ -406,6 +409,7 @@
                 }
             }				
             trigger rsvp-te-bad-packet-length-errors {
+                alert-type routing.rsvp.errors.rsvp-te-bad-packet-length-errors;			
                 frequency 1offset;				
                 term is-bad-packet-length {
                     when {
@@ -432,6 +436,7 @@
                 }
             }				
             trigger rsvp-te-bad-packet-version-errors {
+                alert-type routing.rsvp.errors.rsvp-te-bad-packet-version-errors;			
                 frequency 1offset;				
                 term is-bad-packet-version {
                     when {
@@ -458,6 +463,7 @@
                 }
             }				
             trigger rsvp-te-in-path-error-messages-errors {
+                alert-type routing.rsvp.errors.rsvp-te-in-path-error-messages-errors;			
                 frequency 1offset;				
                 term is-in-path-error-messages {
                     when {
@@ -484,6 +490,7 @@
                 }
             }				
             trigger rsvp-te-in-reservation-error-messages-errors {
+                alert-type routing.rsvp.errors.rsvp-te-in-reservation-error-messages-errors;			
                 frequency 1offset;				
                 term in-reservation-error-messages {
                     when {
@@ -510,6 +517,7 @@
                 }
             }				
             trigger rsvp-te-message-out-of-order-errors {
+                alert-type routing.rsvp.errors.rsvp-te-message-out-of-order-errors;			
                 frequency 1offset;				
                 term is-message-out-of-order {
                     when {
@@ -536,6 +544,7 @@
                 }
             }				
             trigger rsvp-te-out-path-error-messages-errors {
+                alert-type routing.rsvp.errors.rsvp-te-out-path-error-messages-errors;			
                 frequency 1offset;				
                 term out-path-error-messages {
                     when {
@@ -562,6 +571,7 @@
                 }
             }				
             trigger rsvp-te-out-reservation-error-messages-errors {
+                alert-type routing.rsvp.errors.rsvp-te-out-reservation-error-messages-errors;			
                 frequency 1offset;				
                 term out-reservation-error-messages {
                     when {
@@ -588,6 +598,7 @@
                 }
             }				
             trigger rsvp-te-received-nack-errors {
+                alert-type routing.rsvp.errors.rsvp-te-received-nack-errors;			
                 frequency 1offset;				
                 term is-received-nack {
                     when {
@@ -614,6 +625,7 @@
                 }
             }				
             trigger rsvp-te-recv-pkt-disabled-intf-errors {
+                alert-type routing.rsvp.errors.rsvp-te-recv-pkt-disabled-intf-errors;			
                 frequency 1offset;				
                 term recv-pkt-disabled-intf {
                     when {
@@ -640,6 +652,7 @@
                 }
             }				
             trigger rsvp-te-send-failure-errors {
+                alert-type routing.rsvp.errors.rsvp-te-send-failure-errors;			
                 frequency 1offset;				
                 term send-failure {
                     when {
@@ -666,6 +679,7 @@
                 }
             }				
             trigger rsvp-te-state-timeout-errors {
+                alert-type routing.rsvp.errors.rsvp-te-state-timeout-errors;			
                 frequency 1offset;				
                 term is-state-timeout {
                     when {
@@ -692,6 +706,7 @@
                 }
             }
             trigger rsvp-te-unknown-ack-errors {
+                alert-type routing.rsvp.errors.rsvp-te-unknown-ack-errors;			
                 frequency 1offset;				
                 term is-unknown-ack {
                     when {
@@ -718,6 +733,7 @@
                 }
             }
             trigger rsvp-te-unknown-nack-errors {
+                alert-type routing.rsvp.errors.rsvp-te-unknown-nack-errors;			
                 frequency 1offset;				
                 term is-unknown-nack {
                     when {
@@ -761,42 +777,23 @@
                         operating-system junos {
                                 products MX {
                                 sensors lsp;							
-                                platforms MX2010 {
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                                platforms MX2020 {
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
                                 platforms MX240 {
                                     releases 20.1R1 {
                                         sensors lsp-updated;				
                                         release-support min-supported-release;
                                     }								
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
                                 }
                                 platforms MX480 {
                                     releases 20.1R1 {
                                         sensors lsp-updated;				
                                         release-support min-supported-release;
                                     }								
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
                                 }
                                 platforms MX960 {
                                     releases 20.1R1 {
                                         sensors lsp-updated;				
                                         release-support min-supported-release;
                                     }								
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
                                 }
                                 platforms MX304 {
                                     releases 20.1R1 {
@@ -850,32 +847,6 @@
                                     }
                                 }								
                             }							
-                            products PTX {
-                                sensors lsp;                                
-								platforms PTX1000 {
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                                platforms PTX5000 {
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                            }
-                            products QFX {
-                                sensors lsp;							
-                                platforms QFX10000 {
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                                platforms QFX5200 {
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                            }
                         }
                         operating-system junosEvolved {
                             products ACX {
