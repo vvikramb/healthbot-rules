@@ -775,7 +775,7 @@
                 supported-devices {
                     juniper {
                         operating-system junos {
-                                products MX {
+                            products MX {
                                 sensors lsp;							
                                 platforms MX240 {
                                     releases 20.1R1 {
@@ -869,6 +869,12 @@
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms ACX7332 {
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;
+                                        release-support min-supported-release;
+                                    }
+                                }								
                                 platforms ACX7024X {
                                     releases 20.1R1 {
                                         sensors lsp-updated;
@@ -884,12 +890,30 @@
                             }
                             products PTX {
                                 sensors lsp;
+                                platforms PTX10001 {
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms PTX10004 {
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;
+                                        release-support min-supported-release;
+                                    }
+                                }
                                 platforms PTX10008 {
                                     releases 20.1R1 {
                                         sensors lsp-updated;
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms PTX10016 {
+                                    releases 20.1R1 {
+                                        sensors lsp-updated;
+                                        release-support min-supported-release;
+                                    }
+                                }								
                             }				
                         }				
                     }
