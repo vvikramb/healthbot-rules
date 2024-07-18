@@ -50,17 +50,11 @@ healthbot {
             }
             field lfm-interface-name {
                 sensor link-fault-management-information {
+                    where "lfmd-interface-name =~ /{{interface-name}}/";
                     path lfmd-interface-name;
                 }
                 type string;
                 description "interface for which LFM info is collected";
-            }
-            field pe-interface-name {
-                constant {
-                    value "{{interface-name}}"
-                }
-                type string;
-                description "PE Interface to monitor";
             }
             trigger lfm-interface-discovery-state {
                 synopsis "LFM discovery status KPI";
@@ -73,7 +67,7 @@ healthbot {
                     then {
                         status {
                             color green;
-                            message "$lfm-interface-name discovery state: $lfm-discovery-state";
+                            message "$lfm-interface-name LFM discovery-state: $lfm-discovery-state; lfmd-status: $lfmd-status; lfm-peer-address: $lfm-peer-address";
                         }
                     }
                 }
@@ -81,14 +75,14 @@ healthbot {
                     then {
                         status {
                             color red;
-                            message "$lfm-interface-name discovery state: $lfm-discovery-state";
+                            message "$lfm-interface-name LFM discovery-state: $lfm-discovery-state; lfmd-status: $lfmd-status; lfm-peer-address: $lfm-peer-address";
                         }
                     }
                 }
             }
             variable interface-name {
                 value .*
-                description "PE interface to monitor, regular expression, e.g. 'ge-.*'";
+                description "OAM interface to monitor, regular expression, e.g. 'ge-.*'";
                 type string;
             }
             rule-properties {
