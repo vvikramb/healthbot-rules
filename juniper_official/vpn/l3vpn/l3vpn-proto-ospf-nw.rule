@@ -34,6 +34,13 @@ healthbot {
                 }
                 type string;
                 description "Routing instance interface status";
+                enumerate UP as 1;
+                enumerate DOWN as 0;
+                enumerate TESTING as -1;
+                enumerate UNKNOWN as -2;
+                enumerate DORMANT as -3;
+                enumerate NOT_PRESENT as -4;
+                enumerate LOWER_LAYER_DOWN as -5;
             }
             field neighbor-session {
                 constant {
@@ -66,6 +73,15 @@ healthbot {
                 }
                 type string;
                 description "VRF peer state";
+                enumerate not-available as -99;
+                enumerate Down as -30;
+                enumerate Attempt as -25;
+                enumerate Init as -20;
+                enumerate 2-Way as -15;
+                enumerate Exstart as -10;
+                enumerate Exchange as -5;
+                enumerate Loading as 0;
+                enumerate Full as 1;
             }
             trigger l3vpn-pe-interface-state {
                 frequency 1offset;
