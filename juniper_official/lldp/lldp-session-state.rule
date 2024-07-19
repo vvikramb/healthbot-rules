@@ -33,12 +33,14 @@ healthbot {
              * Fields defined using sensor path. Map the longer sensor names
              * to the shorter field names used in the rules.
              */
-            field if-lldp-state {
+            field interface-lldp-state {
                 sensor lldp-sensor {
                     path /lldp/interfaces/interface/state/enabled;
                 }
                 type string;
                 description "Local interface LLDP state";
+                enumerate false as 0;
+                enumerate true as 1;
             }
             field interface-name {
                 sensor lldp-sensor {
@@ -47,13 +49,6 @@ healthbot {
                 }
                 type string;
                 description "Interfaces to be monitored";
-            }
-            field neighbor-state {
-                sensor lldp-sensor {
-                    path /lldp/interfaces/interface/neighbors/neighbor/capabilities/capability/state/enabled;
-                }
-                type string;
-                description "LLDP neighbor state";
             }
             /*
              * Anomaly detection logic.
@@ -67,13 +62,12 @@ healthbot {
                  */
                 term is-lldp-session-up {
                     when {
-                        matches-with "$neighbor-state" true;
-                        matches-with "$if-lldp-state" true;
+                        matches-with "$interface-lldp-state" true;
                     }
                     then {
                         status {
                             color green;
-                            message "Interface $interface-name lldp session is up";
+                            message "LLDP status on interface $interface-name is Enabled";
                         }
                     }
                 }
@@ -84,7 +78,7 @@ healthbot {
                     then {
                         status {
                             color red;
-                            message "Interface-$interface-name lldp session down";
+                            message "LLDP status on interface $interface-name is Disabled";
                         }
                     }
                 }
