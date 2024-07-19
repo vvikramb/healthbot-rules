@@ -32,7 +32,7 @@ healthbot {
                 enumerate "Send Local Remote" as 2;
                 enumerate "Send Local Remote Ok" as 3;
             }
-            field lfmd-status {
+            field lfm-status {
                 sensor link-fault-management-information {
                     path lfmd-status;
                 }
@@ -67,7 +67,7 @@ healthbot {
                     then {
                         status {
                             color green;
-                            message "$lfm-interface-name LFM discovery-state: $lfm-discovery-state; lfmd-status: $lfmd-status; lfm-peer-address: $lfm-peer-address";
+                            message "$lfm-interface-name LFM discovery-state: $lfm-discovery-state; lfm-status: $lfm-status; lfm-peer-address: $lfm-peer-address";
                         }
                     }
                 }
@@ -75,7 +75,7 @@ healthbot {
                     then {
                         status {
                             color red;
-                            message "$lfm-interface-name LFM discovery-state: $lfm-discovery-state; lfmd-status: $lfmd-status; lfm-peer-address: $lfm-peer-address";
+                            message "$lfm-interface-name LFM discovery-state: $lfm-discovery-state; lfm-status: $lfm-status; lfm-peer-address: $lfm-peer-address";
                         }
                     }
                 }
