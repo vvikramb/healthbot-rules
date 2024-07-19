@@ -66,6 +66,15 @@ healthbot {
                 }
                 type string;
                 description "VRF peer state";
+                enumerate not-available as -99;
+                enumerate Down as -30;
+                enumerate Attempt as -25;
+                enumerate Init as -20;
+                enumerate 2-Way as -15;
+                enumerate Exstart as -10;
+                enumerate Exchange as -5;
+                enumerate Loading as 0;
+                enumerate Full as 1;
             }
             trigger l3vpn-pe-interface-state {
                 frequency 1offset;

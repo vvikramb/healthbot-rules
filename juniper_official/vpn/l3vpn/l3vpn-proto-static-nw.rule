@@ -33,6 +33,13 @@ healthbot {
                 }
                 type string;
                 description "Routing instance interface status";
+                enumerate UP as 1;
+                enumerate DOWN as 0;
+                enumerate TESTING as -1;
+                enumerate UNKNOWN as -2;
+                enumerate DORMANT as -3;
+                enumerate NOT_PRESENT as -4;
+                enumerate LOWER_LAYER_DOWN as -5;
             }
             field neighbor-address {
                 constant {
