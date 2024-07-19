@@ -151,7 +151,11 @@ healthbot {
                 enumerate __default__ as -1;
                 enumerate DOWN as 0;
                 enumerate UP as 1;
-                enumerate LOWER_LAYER_DOWN as -10;				
+                enumerate LOWER_LAYER_DOWN as -10;
+                enumerate TESTING as -20;
+                enumerate UNKNOWN as -30;
+                enumerate DORMANT as -40;
+                enumerate NOT_PRESENT as -50;
             }
             field low-threshold {
                 constant {
