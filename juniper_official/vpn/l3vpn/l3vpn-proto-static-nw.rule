@@ -83,14 +83,14 @@ healthbot {
                 }
                 term is-pe-interface-down {
                     when {
-                        matches-with "$instance-interface-status" DOWN {
+                        does-not-match-with "$instance-interface-status" UP {
                             ignore-case;
                         }
                     }
                     then {
                         status {
                             color red;
-                            message "PE interface $instance-interface-name.$instance-ifl-no of VPN:$vpn-name on router $pe-router-name is DOWN";
+                            message "PE interface $instance-interface-name.$instance-ifl-no of VPN:$vpn-name on router $pe-router-name is $instance-interface-status";
                         }
                     }
                 }
