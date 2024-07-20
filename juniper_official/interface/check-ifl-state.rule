@@ -96,7 +96,7 @@ healthbot {
                  */				
                 term ifl-up {
                 	when {
-                        does-not-match-with "$ifl-oper-status" UP; {
+                        does-not-match-with "$ifl-oper-status" UP {
                             ignore-case;
                         }
                     }
