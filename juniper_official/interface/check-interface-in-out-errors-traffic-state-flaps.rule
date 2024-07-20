@@ -380,7 +380,9 @@ healthbot {
                 term is-link-down {
                     when {
                         matches-with "$admin-state" UP;
-                        does-not-match-with "$link-state" UP;
+                        does-not-match-with "$link-state" UP {
+                            ignore-case;
+                        }
                     }
                     then {
                         status {
