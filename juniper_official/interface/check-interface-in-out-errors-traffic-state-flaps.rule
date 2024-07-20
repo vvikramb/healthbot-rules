@@ -380,12 +380,12 @@ healthbot {
                 term is-link-down {
                     when {
                         matches-with "$admin-state" UP;
-                        matches-with "$link-state" DOWN;
+                        does-not-match-with "$link-state" UP;
                     }
                     then {
                         status {
                             color red;
-                            message "$interface-name link operator status is DOWN";
+                            message "$interface-name link operator status is $link-state";
                         }
                     }
                 }				
