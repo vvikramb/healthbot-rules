@@ -61,19 +61,19 @@ healthbot {
 								}
 							}
 							products MX {
-								platforms MX204 {
+								platforms All {
 									releases 22.1R1 {
 										release-support min-supported-release;
 									}
 								}
 							}
 							products ACX {
-						                platforms All {
-                  							releases 22.3R1 {
-                    								release-support min-supported-release;
-                  							}
-                						}
-              						}
+								platforms All {
+									releases 22.3R1 {
+										release-support min-supported-release;
+									}
+								}
+							}
 						}
 					}
 				}

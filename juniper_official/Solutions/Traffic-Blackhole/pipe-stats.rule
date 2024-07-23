@@ -282,7 +282,7 @@ healthbot {
                                 }
                             }
                             products MX {
-                                platforms MX204 {
+                                platforms All {
                                     releases 22.1R1 {
                                         release-support min-supported-release;
                                     }
