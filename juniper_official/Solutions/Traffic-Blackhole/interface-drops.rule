@@ -1,4 +1,5 @@
 /*
+ * REQ: COL-1109
  * Rule to get all the Interface Drops
  * Upstream application will use these stats to find Blackholes
  */
@@ -114,8 +115,33 @@ healthbot {
                                 }
                             }
                             products MX {
-                                platforms All {
-                                    releases 22.1R1 {
+                                platforms MX240 {
+                                    releases 19.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX480 {
+                                    releases 19.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX960 {
+                                    releases 19.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX2010 {
+                                    releases 19.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX2020 {
+                                    releases 19.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms VMX {
+                                    releases 19.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
