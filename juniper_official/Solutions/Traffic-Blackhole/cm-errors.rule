@@ -1,51 +1,51 @@
 /*
 	* REQ: REQ-222
-	* Rule to collect Chassis Alarms for Blackhole Detection RCA.
+	* Rule to collect CMErrors for Blackhole Detection RCA.
 */
 healthbot {
 	topic hardware.fpc {
-		rule chassis-alarms {
+		rule cm-errors {
 			keys [ fru-slot fru-type error-name ];
-			synopsis "Chassis Alarms";
-			description "Chassis Alarms";
-			sensor sensor-chassis-alarms {
-				synopsis "Chassis Alarms";
-				description "Chassis Alarms";
+			synopsis "CM Errors";
+			description "CM Errors";
+			sensor sensor-cm-errors {
+				synopsis "CM Errors";
+				description "CM Errors";
 				open-config {
 					sensor-name /junos/system/cmerror/counters/;
 					frequency 60s;
 				}
 			}
 			field fru-slot {
-				sensor sensor-chassis-alarms {
+				sensor sensor-cm-errors {
 					path "/junos/chassis/cmerror/counters/fru-slot";
 				}
 				type string;
 				description "FRU Slot";
 			}
 			field fru-type {
-				sensor sensor-chassis-alarms {
+				sensor sensor-cm-errors {
 					path "/junos/chassis/cmerror/counters/fru-type";
 				}
 				type string;
 				description "FRU Type";
 			}
 			field error-name {
-				sensor sensor-chassis-alarms {
+				sensor sensor-cm-errors {
 					path "/junos/chassis/cmerror/counters/@name";
 				}
 				type string;
 				description "Error Name";
 			}
 			field error-count {
-				sensor sensor-chassis-alarms {
+				sensor sensor-cm-errors {
 					path "/junos/chassis/cmerror/counters/occur-count";
 				}
 				type integer;
 				description "Alarm Occurrences";
 			}
 			field error-active {
-				sensor sensor-chassis-alarms {
+				sensor sensor-cm-errors {
 					path "/junos/chassis/cmerror/counters/enabled";
 				}
 				type string;
@@ -92,7 +92,12 @@ healthbot {
 										release-support min-supported-release;
 									}
 								}
-								platforms MX2020 {
+								platforms 204 {
+									releases 19.1R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms 304 {
 									releases 19.1R1 {
 										release-support min-supported-release;
 									}
@@ -104,7 +109,27 @@ healthbot {
 								}
 							}
 							products ACX {
-								platforms All {
+								platforms ACX7100-32C {
+									releases 22.3R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms ACX7100-48L {
+									releases 22.3R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms ACX7509 {
+									releases 22.3R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms ACX7024 {
+									releases 22.3R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms ACX7908 {
 									releases 22.3R1 {
 										release-support min-supported-release;
 									}

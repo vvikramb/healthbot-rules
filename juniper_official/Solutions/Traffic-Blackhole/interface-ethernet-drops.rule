@@ -1,84 +1,42 @@
 /*
  * REQ: REQ-222
- * Rule to get all the Interface Drops
+ * Rule to get all the Interface Ethernet Drops
  * Upstream application will use these stats to find Blackholes
  */
 healthbot {
     topic hardware.fpc {
-        rule interface-drops {
+        rule interface-ethernet-drops {
             keys interface-name;
-            synopsis "Interface Drops";
-            description "Interface Drops";
-            sensor sensor-interface-drops {
-                synopsis "Interface Drops";
-                description "Interface Drops";
+            synopsis "Interface Ethernet Drops";
+            description "Interface Ethernet Drops";
+            sensor sensor-interface-ethernet-drops {
+                synopsis "Interface Ethernet Drops";
+                description "Interface Ethernet Drops";
                 open-config {
-                    sensor-name /interfaces/interface/state/;
+                    sensor-name /interfaces/interface/ethernet/state/;
                     frequency 60s;
                 }
             }
             field interface-name {
-                sensor sensor-interface-drops {
+                sensor sensor-interface-ethernet-drops {
                     path "/interfaces/interface/@name";
                 }
                 type string;
                 description "Interface Name";
             }
-            field in-discards {
-                sensor sensor-interface-drops {
-                    path /interfaces/interface/state/counters/in-discards;
+            field in-block-errors {
+                sensor sensor-interface-ethernet-drops {
+                    path /interfaces/interface/ethernet/state/counters/in-block-errors;
                 }
                 type unsigned-integer;
-                description "In Discards";
+                description "In Block Errors";
             }
-            field in-errors {
-                sensor sensor-interface-drops {
-                    path /interfaces/interface/state/counters/in-errors;
+            field in-crc-errors {
+                sensor sensor-interface-ethernet-drops {
+                    path /interfaces/interface/ethernet/state/counters/in-crc-errors;
                 }
                 type unsigned-integer;
-                description "In Errors";
-            }
-            field in-fcs-errors {
-                sensor sensor-interface-drops {
-                    path /interfaces/interface/state/counters/in-fcs-errors;
-                }
-                type unsigned-integer;
-                description "In FCS Errors";
-            }
-            field out-discards {
-                sensor sensor-interface-drops {
-                    path /interfaces/interface/state/counters/out-discards;
-                }
-                type unsigned-integer;
-                description "Out Discards";
-            }
-            field out-errors {
-                sensor sensor-interface-drops {
-                    path /interfaces/interface/state/counters/out-errors;
-                }
-                type unsigned-integer;
-                description "Out Errors";
-            }
-            field red-drop-pkts {
-                sensor sensor-interface-drops {
-                    path /interfaces/interface/state/counters/out-queue/red-drop-pkts;
-                }
-                type unsigned-integer;
-                description "Red Drop Pkts";
-            }
-            field rl-drop-pkts {
-                sensor sensor-interface-drops {
-                    path /interfaces/interface/state/counters/out-queue/rl-drop-pkts;
-                }
-                type unsigned-integer;
-                description "Rl Drop Pkts";
-            }
-            field tail-drop-pkts {
-                sensor sensor-interface-drops {
-                    path /interfaces/interface/state/counters/out-queue/tail-drop-pkts;
-                }
-                type unsigned-integer;
-                description "Tail Drop Pkts";
+                description "In CRC Errors";
             }
             rule-properties {
                 version 1;

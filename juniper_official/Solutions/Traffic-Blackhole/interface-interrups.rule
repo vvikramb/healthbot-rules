@@ -12,7 +12,7 @@ healthbot {
 				synopsis "Interface Block CM Errors and Interrupts";
 				description "Interface Block CM Errors and Interrupts";
 				open-config {
-					sensor-name /components/component/integrated-circuit/pipeline-counters/errors/interface-block/interface-block-error/;
+					sensor-name /components/component/;
 					frequency 60s;
 				}
 			}
@@ -85,7 +85,12 @@ healthbot {
 										release-support min-supported-release;
 									}
 								}
-								platforms MX2020 {
+								platforms 204 {
+									releases 19.1R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms 304 {
 									releases 19.1R1 {
 										release-support min-supported-release;
 									}
@@ -97,7 +102,27 @@ healthbot {
 								}
 							}
 							products ACX {
-								platforms All {
+								platforms ACX7100-32C {
+									releases 22.3R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms ACX7100-48L {
+									releases 22.3R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms ACX7509 {
+									releases 22.3R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms ACX7024 {
+									releases 22.3R1 {
+										release-support min-supported-release;
+									}
+								}
+								platforms ACX7908 {
 									releases 22.3R1 {
 										release-support min-supported-release;
 									}
