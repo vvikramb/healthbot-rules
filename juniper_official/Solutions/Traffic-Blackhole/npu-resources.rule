@@ -81,16 +81,6 @@ healthbot {
 										release-support min-supported-release;
 									}
 								}
-								platforms 204 {
-									releases 19.1R1 {
-										release-support min-supported-release;
-									}
-								}
-								platforms 304 {
-									releases 19.1R1 {
-										release-support min-supported-release;
-									}
-								}
 								platforms VMX {
 									releases 19.1R1 {
 										release-support min-supported-release;
