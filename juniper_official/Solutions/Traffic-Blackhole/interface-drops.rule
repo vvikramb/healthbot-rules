@@ -1,5 +1,5 @@
 /*
- * REQ: COL-1109
+ * REQ: REQ-222
  * Rule to get all the Interface Drops
  * Upstream application will use these stats to find Blackholes
  */

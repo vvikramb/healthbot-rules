@@ -1,5 +1,5 @@
 /*
-	* REQ: COL-1109
+	* REQ: REQ-222
 	* Rule to collect Queueing Block CM Errors and Interrupts for Blackhole Detection RCA.
 */
 healthbot {
