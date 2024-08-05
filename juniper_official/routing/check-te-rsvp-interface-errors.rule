@@ -666,18 +666,6 @@ healthbot {
                                     }
                                 }								
                             }							
-                            products PTX {
-                                platforms JNP10008 {
-                                    releases 20.1R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                                platforms JNP10016 {
-                                    releases 20.1R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                            }
                         }
                         operating-system junosEvolved {
                             products ACX {
