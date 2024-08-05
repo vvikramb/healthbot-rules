@@ -857,12 +857,18 @@
                                         release-support min-supported-release;
                                     }
                                 }
-                                platforms ACX7100 {
+                                platforms ACX7100-32C {
                                     releases 22.3R1 {
                                         sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms ACX7100-48L {
+                                    releases 22.3R1 {
+                                        sensors lsp;
+                                        release-support min-supported-release;
+                                    }
+                                }								
                                 platforms ACX7348 {
                                     releases 22.3R1 {
                                         sensors lsp;
@@ -890,12 +896,24 @@
                             }
                             products PTX {
                                 sensors lsp-updated;
-                                platforms PTX10001 {
+                                platforms PTX10001-36MR-K {
                                     releases 22.3R1 {
                                         sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms PTX10001-36MR {
+                                    releases 22.3R1 {
+                                        sensors lsp;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms PTX10001-20C {
+                                    releases 22.3R1 {
+                                        sensors lsp;
+                                        release-support min-supported-release;
+                                    }
+                                }																
                                 platforms PTX10004 {
                                     releases 22.3R1 {
                                         sensors lsp;
