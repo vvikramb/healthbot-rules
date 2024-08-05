@@ -21,7 +21,7 @@
             }			
             field authentication-fail {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/authentication-fail;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/authentication-fail;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -39,7 +39,7 @@
             }
             field bad-checksum {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/bad-checksum;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/bad-checksum;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -57,7 +57,7 @@
             }
             field bad-packet-format {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/bad-packet-format;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/bad-packet-format;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -75,7 +75,7 @@
             }
             field bad-packet-length {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/bad-packet-length;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/bad-packet-length;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -93,7 +93,7 @@
             }
             field bad-packet-version {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/bad-packet-version;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/bad-packet-version;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -147,7 +147,7 @@
             }
             field instance-name {
                 sensor lsp {
-                    path "/network-instances/network-instance/@instance-name";
+                    path "/network-instances/network-instance/@name";
                 }
                 sensor lsp-updated {
                     path "/network-instances/network-instance/@name";
@@ -157,7 +157,7 @@
             }
             field message-out-of-order {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/message-out-of-order;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/message-out-of-order;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -211,7 +211,7 @@
             }
             field received-nack {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/received-nack;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/received-nack;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -229,7 +229,7 @@
             }
             field recv-pkt-disabled-intf {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/recv-pkt-disabled-intf;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/recv-pkt-disabled-intf;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -247,7 +247,7 @@
             }
             field send-failure {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/send-failure;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/send-failure;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -265,7 +265,7 @@
             }
             field state-timeout {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/state-timeout;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/state-timeout;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -283,7 +283,7 @@
             }
             field unknown-ack {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/unknown-ack;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/unknown-ack;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -301,7 +301,7 @@
             }
             field unknown-nack {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/unknown-nack;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/unknown-nack;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -776,73 +776,73 @@
                     juniper {
                         operating-system junos {
                             products MX {
-                                sensors lsp;							
+                                sensors lsp-updated;							
                                 platforms MX240 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;				
+                                    releases 22.3R1 {
+                                        sensors lsp;				
                                         release-support min-supported-release;
                                     }								
                                 }
                                 platforms MX480 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;				
+                                    releases 22.3R1 {
+                                        sensors lsp;				
                                         release-support min-supported-release;
                                     }								
                                 }
                                 platforms MX960 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;				
+                                    releases 22.3R1 {
+                                        sensors lsp;				
                                         release-support min-supported-release;
                                     }								
                                 }
                                 platforms MX304 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;				
+                                    releases 22.3R1 {
+                                        sensors lsp;				
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX204 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10004 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                    releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10008 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                    releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10016 {
-                                     releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                     releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }								
                             }
                             products JNP {
-                                sensors lsp;							
+                                sensors lsp-updated;							
                                 platforms JNP10004 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                    releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms JNP10008 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                    releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms JNP10016 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                    releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }								
@@ -850,67 +850,67 @@
                         }
                         operating-system junosEvolved {
                             products ACX {
-                                sensors lsp;			
+                                sensors lsp-updated;			
                                 platforms ACX7024 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7100 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7348 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7332 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }								
                                 platforms ACX7024X {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7509 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                             }
                             products PTX {
-                                sensors lsp;
+                                sensors lsp-updated;
                                 platforms PTX10001 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms PTX10004 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms PTX10008 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms PTX10016 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }								
