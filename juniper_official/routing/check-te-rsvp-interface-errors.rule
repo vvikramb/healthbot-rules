@@ -220,6 +220,9 @@ healthbot {
                     }
                 }					
                 term no-authentication-fail {
+                    when {
+                        exists "$authentication-fail";
+                    }				
                     then {
                         status {
                             color green;
@@ -248,6 +251,9 @@ healthbot {
                     }
                 }
                 term no-bad-checksum {
+                    when {
+                        exists "$bad-checksum";
+                    }				
                     then {
                         status {
                             color green;
@@ -276,6 +282,9 @@ healthbot {
                     }
                 }
                 term no-bad-packet-format {
+                    when {
+                        exists "$$bad-packet-format";
+                    }				
                     then {
                         status {
                             color green;
@@ -304,6 +313,9 @@ healthbot {
                     }
                 }
                 term no-bad-packet-length {
+                    when {
+                        exists "$bad-packet-length";
+                    }				
                     then {
                         status {
                             color green;
@@ -332,6 +344,9 @@ healthbot {
                     }
                 }
                 term no-bad-packet-version {
+                    when {
+                        exists "$bad-packet-version";
+                    }				
                     then {
                         status {
                             color green;
@@ -360,6 +375,9 @@ healthbot {
                     }
                 }
                 term no-in-path-error-messages {
+                    when {
+                        exists "$in-path-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -388,6 +406,9 @@ healthbot {
                     }
                 }
                 term no-in-reservation-error-messages {
+                    when {
+                        exists "$in-reservation-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -416,6 +437,9 @@ healthbot {
                     }
                 }
                 term no-message-out-of-order {
+                    when {
+                        exists "$message-out-of-order";
+                    }				
                     then {
                         status {
                             color green;
@@ -444,6 +468,9 @@ healthbot {
                     }
                 }
                 term no-out-path-error-messages {
+                    when {
+                        exists "$out-path-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -472,6 +499,9 @@ healthbot {
                     }
                 }
                 term no-out-reservation-error-messages {
+                    when {
+                        exists "$out-reservation-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -500,6 +530,9 @@ healthbot {
                     }
                 }
                 term no-received-nack {
+                    when {
+                        exists "$received-nack";
+                    }				
                     then {
                         status {
                             color green;
@@ -528,6 +561,9 @@ healthbot {
                     }
                 }
                 term no-recv-pkt-disabled-intf {
+                    when {
+                        exists "$recv-pkt-disabled-intf";
+                    }				
                     then {
                         status {
                             color green;
@@ -556,6 +592,9 @@ healthbot {
                     }
                 }
                 term no-send-failure {
+                    when {
+                        exists "$send-failure";
+                    }				
                     then {
                         status {
                             color green;
@@ -583,6 +622,9 @@ healthbot {
                     }
                 }
                 term no-state-timeout {
+                    when {
+                        exists "$state-timeout";
+                    }				
                     then {
                         status {
                             color green;
