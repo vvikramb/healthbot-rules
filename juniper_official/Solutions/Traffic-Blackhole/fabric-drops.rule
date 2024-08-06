@@ -87,11 +87,6 @@ healthbot {
                                         release-support min-supported-release;
                                     }
                                 }
-                                platforms PTX10002-36QDD {
-                                    releases 23.4R2 {
-                                        release-support min-supported-release;
-                                    }
-                                }
                             }
                         }
                     }

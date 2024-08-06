@@ -4,7 +4,7 @@
  * Upstream application will use these stats to find Blackholes
  */
 healthbot {
-    topic hardware.fpc {
+    topic interfaces {
         rule interface-ethernet-drops {
             keys interface-name;
             synopsis "Interface Ethernet Drops";
@@ -49,11 +49,6 @@ healthbot {
                             products PTX {
                                 platforms PTX10008 {
                                     releases 22.2R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
-                                platforms PTX10002-36QDD {
-                                    releases 23.4R2 {
                                         release-support min-supported-release;
                                     }
                                 }

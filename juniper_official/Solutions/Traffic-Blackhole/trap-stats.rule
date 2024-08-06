@@ -6,7 +6,7 @@
 healthbot {
 	topic hardware.fpc {
 		rule trap-stats {
-			keys [ fpc-name trap-name ];
+			keys [ fpc trap-name ];
 			synopsis "Forwarding Block Trap Names and Values";
 			description "Forwarding Block Trap Names and Values";
 			sensor sensor-trap-stats {
@@ -17,7 +17,7 @@ healthbot {
 					frequency 60s;
 				}
 			}
-			field fpc-name {
+			field fpc {
 				sensor sensor-trap-stats {
 					where "/components/component/@name =~ /PIC[0-9]:NPU/";
 					where "/components/component/properties/property/@name != 'ts-input-packets-pps'";
@@ -52,11 +52,6 @@ healthbot {
 							products PTX {
 								platforms PTX10008 {
 									releases 22.2R1 {
-										release-support min-supported-release;
-									}
-								}
-								platforms PTX10002-36QDD {
-									releases 23.4R2 {
 										release-support min-supported-release;
 									}
 								}

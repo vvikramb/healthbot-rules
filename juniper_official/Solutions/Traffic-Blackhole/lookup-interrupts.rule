@@ -5,7 +5,7 @@
 healthbot {
 	topic hardware.fpc {
 		rule lookup-interrupts {
-			keys [ fpc-name error-name ];
+			keys [ fpc error-name ];
 			synopsis "Lookup Block CM Errors and Interrupts";
 			description "Lookup Block CM Errors and Interrupts";
 			sensor sensor-interrupts {
@@ -16,7 +16,7 @@ healthbot {
 					frequency 60s;
 				}
 			}
-			field fpc-name {
+			field fpc {
 				sensor sensor-interrupts {
 					path "/components/component/@name";
 				}
@@ -55,11 +55,6 @@ healthbot {
 							products PTX {
 								platforms PTX10008 {
 									releases 22.2R1 {
-										release-support min-supported-release;
-									}
-								}
-								platforms PTX10002-36QDD {
-									releases 23.4R2 {
 										release-support min-supported-release;
 									}
 								}
