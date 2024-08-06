@@ -201,7 +201,7 @@ healthbot {
              * Anomaly detection logic to detect rsvp-te interface errors.
              */
             trigger rsvp-te-interface-authentication-fail-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-authentication-fail-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-authentication-fail-errors;			
                 frequency 1offset;
                 term is-authentication-fail {
                     when {
@@ -229,7 +229,7 @@ healthbot {
                 }
             }					
             trigger rsvp-te-interface-bad-checksum-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-bad-checksum-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-bad-checksum-errors;			
                 frequency 1offset;			
                 term is-bad-checksum {
                     when {
@@ -257,7 +257,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-bad-packet-format-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-bad-packet-format-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-bad-packet-format-errors;			
                 frequency 1offset;			
                 term is-bad-packet-format {
                     when {
@@ -285,7 +285,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-bad-packet-length-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-bad-packet-length-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-bad-packet-length-errors;			
                 frequency 1offset;			
                 term is-bad-packet-length {
                     when {
@@ -313,7 +313,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-bad-packet-version-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-bad-packet-version-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-bad-packet-version-errors;			
                 frequency 1offset;			
                 term is-bad-packet-version {
                     when {
@@ -341,7 +341,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-path-error-messages-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-authentication-fail-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-authentication-fail-errors;			
                 frequency 1offset;			
                 term is-in-path-error-messages {
                     when {
@@ -369,7 +369,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-in-reservation-error-messages-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-in-reservation-error-messages-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-in-reservation-error-messages-errors;			
                 frequency 1offset;			
                 term in-reservation-error-messages {
                     when {
@@ -397,7 +397,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-message-out-of-order-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-message-out-of-order-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-message-out-of-order-errors;			
                 frequency 1offset;			
                 term is-message-out-of-order {
                     when {
@@ -425,7 +425,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-out-path-error-messages-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-out-path-error-messages-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-out-path-error-messages-errors;			
                 frequency 1offset;			
                 term out-path-error-messages {
                     when {
@@ -453,7 +453,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-out-reservation-error-messages-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-out-reservation-error-messages-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-out-reservation-error-messages-errors;			
                 frequency 1offset;			
                 term out-reservation-error-messages {
                     when {
@@ -481,7 +481,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-received-nack-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-received-nack-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-received-nack-errors;			
                 frequency 1offset;			
                 term is-received-nack {
                     when {
@@ -509,7 +509,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-recv-pkt-disabled-intf-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-recv-pkt-disabled-intf-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-recv-pkt-disabled-intf-errors;			
                 frequency 1offset;			
                 term recv-pkt-disabled-intf {
                     when {
@@ -537,7 +537,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-send-failure-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-send-failure-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-send-failure-errors;			
                 frequency 1offset;			
                 term send-failure {
                     when {
@@ -565,7 +565,7 @@ healthbot {
                 }				
             }
             trigger rsvp-te-interface-state-timeout-errors {
-                alert-type routing.rsvp.errors.rsvp-te-interface-state-timeout-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-state-timeout-errors;			
                 frequency 1offset;			
                 term is-state-timeout {
                     when {
