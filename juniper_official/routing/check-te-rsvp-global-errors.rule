@@ -346,6 +346,9 @@
                     }
                 }
                 term no-rsvp-te-authentication-fail-errors {
+                    when {
+                        exists "$authentication-fail";
+                    }				
                     then {
                         status {
                             color green;
@@ -373,6 +376,9 @@
                      }
                 }
                 term no-rsvp-te-bad-checksum-errors {
+                    when {
+                        exists "$bad-checksum";
+                    }				
                     then {
                         status {
                             color green;
@@ -400,6 +406,9 @@
                     }
                 }
                 term no-rsvp-te-bad-packet-format-errors {
+                    when {
+                        exists "$bad-packet-format";
+                    }				
                     then {
                         status {
                             color green;
@@ -427,6 +436,9 @@
                     }
                 }
                 term no-rsvp-te-bad-packet-length-errors {
+                    when {
+                        exists "$bad-packet-length";
+                    }				
                     then {
                         status {
                             color green;
@@ -454,6 +466,9 @@
                     }
                 }
                 term no-rsvp-te-bad-packet-version-errors {
+                    when {
+                        exists "$bad-packet-version";
+                    }				
                     then {
                         status {
                             color green;
@@ -481,6 +496,9 @@
                     }
                 }
                 term no-rsvp-te-in-path-error-messages-errors {
+                    when {
+                        exists "$in-path-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -508,6 +526,9 @@
                     }
                 }
                 term no-rsvp-te-in-reservation-error-messages-errors {
+                    when {
+                        exists "$in-reservation-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -535,6 +556,9 @@
                     }
                 }
                 term no-rsvp-te-message-out-of-order-errors {
+                    when {
+                        exists "$message-out-of-order";
+                    }				
                     then {
                         status {
                             color green;
@@ -562,6 +586,9 @@
                     }
                 }
                 term no-rsvp-te-out-path-error-messages-errors {
+                    when {
+                        exists "$out-path-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -589,6 +616,9 @@
                     }
                 }
                 term no-rsvp-te-out-reservation-error-messages-errors {
+                    when {
+                        exists "$out-reservation-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -616,6 +646,9 @@
                     }
                 }
                 term no-rsvp-te-received-nack-errors {
+                    when {
+                        exists "$received-nack";
+                    }				
                     then {
                         status {
                             color green;
@@ -643,6 +676,9 @@
                     }
                 }
                 term no-rsvp-te-recv-pkt-disabled-intf-errors {
+                    when {
+                        exists "$recv-pkt-disabled-intf";
+                    }				
                     then {
                         status {
                             color green;
@@ -670,6 +706,9 @@
                     }
                 }
                 term no-rsvp-te-send-failure-errors {
+                    when {
+                        exists "$send-failure";
+                    }				
                     then {
                         status {
                             color green;
@@ -697,6 +736,9 @@
                     }
                 }
                 term no-rsvp-te-state-timeout-errors {
+                    when {
+                        exists "$state-timeout";
+                    }				
                     then {
                         status {
                             color green;
@@ -724,6 +766,9 @@
                     }
                 }
                 term no-rsvp-te-unknown-ack-errors {
+                    when {
+                        exists "$unknown-ack";
+                    }				
                     then {
                         status {
                             color green;
@@ -751,6 +796,9 @@
                     }
                 }
                 term no-rsvp-te-unknown-nack-errors {
+                    when {
+                        exists "$unknown-nack";
+                    }				
                     then {
                         status {
                             color green;
