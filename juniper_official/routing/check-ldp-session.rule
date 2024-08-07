@@ -29,7 +29,8 @@
                 type string;
                 description "LDP session state";
                 enumerate __default__ as -99;
-                enumerate NON_EXISTENT as -25;
+                enumerate NON_EXISTENT as -26;
+                enumerate Nonexistent as -25;				
                 enumerate Connecting as -20;
                 enumerate Initialized as -15;
                 enumerate OpenRec as -10;
