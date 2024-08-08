@@ -1,18 +1,19 @@
 /*
+ * REQ: REQ-222
  * Rule to get all the pipe stats(ASIC drops) stats
  * Upstream application will use these stats to find anomaly
  */
 healthbot {
     topic hardware.fpc {
         rule pfe-pipe-stats {
-            keys fpc-name;
+            keys fpc;
             synopsis "PFE ASIC drops";
             description "PFE ASIC drops from interface, fabric, lookup, host and Queuing blocks";
             sensor pipestats {
-		synopsis "PFE ASIC drops definition";
-		description "GNMI based telemetry which collects ASIC drops from interface, fabric, lookup, host and Queuing blocks";
+                synopsis "PFE ASIC drops definition";
+                description "GNMI based telemetry which collects ASIC drops from interface, fabric, lookup, host and Queuing blocks";
                 open-config {
-                    sensor-name /components/component/integrated-circuit/pipeline-counters;
+                    sensor-name /components/component/;
                     frequency 60s;
                 }
             }
@@ -65,12 +66,12 @@ healthbot {
                 type unsigned-integer;
                 description "Fabric oversubscription drops";
             }
-            field fpc-name {
+            field fpc {
                 sensor pipestats {
                     path "/components/component/@name";
                 }
                 type string;
-		description "FPC name";
+                description "FPC name";
             }
             field host-interface-block-fragment-punt {
                 sensor pipestats {
@@ -276,13 +277,6 @@ healthbot {
                                     }
                                 }
                             }
-                            products ACX {
-		                platforms All {
-                  		    releases 22.3R1 {
-                    			release-support min-supported-release;
-                  		    }
-                		}
-              		    }
                         }
                     }
                 }

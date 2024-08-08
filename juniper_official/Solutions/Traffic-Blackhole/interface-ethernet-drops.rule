@@ -1,0 +1,62 @@
+/*
+ * REQ: REQ-222
+ * Rule to get all the Interface Ethernet Drops
+ * Upstream application will use these stats to find Blackholes
+ */
+healthbot {
+    topic interfaces {
+        rule interface-ethernet-drops {
+            keys interface-name;
+            synopsis "Interface Ethernet Drops";
+            description "Interface Ethernet Drops";
+            sensor sensor-interface-ethernet-drops {
+                synopsis "Interface Ethernet Drops";
+                description "Interface Ethernet Drops";
+                open-config {
+                    sensor-name /interfaces/interface/ethernet/state/;
+                    frequency 60s;
+                }
+            }
+            field interface-name {
+                sensor sensor-interface-ethernet-drops {
+                    path "/interfaces/interface/@name";
+                }
+                type string;
+                description "Interface Name";
+            }
+            field in-block-errors {
+                sensor sensor-interface-ethernet-drops {
+                    path /interfaces/interface/ethernet/state/counters/in-block-errors;
+                }
+                type unsigned-integer;
+                description "In Block Errors";
+            }
+            field in-crc-errors {
+                sensor sensor-interface-ethernet-drops {
+                    path /interfaces/interface/ethernet/state/counters/in-crc-errors;
+                }
+                type unsigned-integer;
+                description "In CRC Errors";
+            }
+            rule-properties {
+                version 1;
+                contributor juniper;
+                category basic;
+                supported-healthbot-version 1.0.0;
+                supported-devices {
+                    juniper {
+                        operating-system junosEvolved {
+                            products PTX {
+                                platforms PTX10008 {
+                                    releases 22.2R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

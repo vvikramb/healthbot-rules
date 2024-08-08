@@ -8,7 +8,7 @@
 healthbot {
 	topic hardware.fpc {
 		rule npu-resource {
-			keys [ fpc-name property-name ];
+			keys [ fpc property-name ];
 			synopsis "NPU resource usage stats analyzer";
 			description "Rule to fetch NPU resource stats";
 			sensor sensor-npu-resources {
@@ -19,7 +19,7 @@ healthbot {
 					frequency 60s;
 				}
 			}
-			field fpc-name {
+			field fpc {
 				sensor sensor-npu-resources {
 					path "/components/component/@name";
 				}
@@ -55,13 +55,6 @@ healthbot {
 									}
 								}
 							}
-							products ACX {
-						                platforms All {
-                  							releases 22.3R1 {
-                    								release-support min-supported-release;
-                  							}
-                						}
-              						}
 						}
 					}
 				}

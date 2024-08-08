@@ -1,0 +1,104 @@
+/*
+ * REQ: REQ-222
+ * Rule to get all the Interface Drops
+ * Upstream application will use these stats to find Blackholes
+ */
+healthbot {
+    topic interfaces {
+        rule interface-drops {
+            keys interface-name;
+            synopsis "Interface Drops";
+            description "Interface Drops";
+            sensor sensor-interface-drops {
+                synopsis "Interface Drops";
+                description "Interface Drops";
+                open-config {
+                    sensor-name /interfaces/interface/state/;
+                    frequency 60s;
+                }
+            }
+            field interface-name {
+                sensor sensor-interface-drops {
+                    path "/interfaces/interface/@name";
+                }
+                type string;
+                description "Interface Name";
+            }
+            field in-discards {
+                sensor sensor-interface-drops {
+                    path /interfaces/interface/state/counters/in-discards;
+                }
+                type unsigned-integer;
+                description "In Discards";
+            }
+            field in-errors {
+                sensor sensor-interface-drops {
+                    path /interfaces/interface/state/counters/in-errors;
+                }
+                type unsigned-integer;
+                description "In Errors";
+            }
+            field in-fcs-errors {
+                sensor sensor-interface-drops {
+                    path /interfaces/interface/state/counters/in-fcs-errors;
+                }
+                type unsigned-integer;
+                description "In FCS Errors";
+            }
+            field out-discards {
+                sensor sensor-interface-drops {
+                    path /interfaces/interface/state/counters/out-discards;
+                }
+                type unsigned-integer;
+                description "Out Discards";
+            }
+            field out-errors {
+                sensor sensor-interface-drops {
+                    path /interfaces/interface/state/counters/out-errors;
+                }
+                type unsigned-integer;
+                description "Out Errors";
+            }
+            field red-drop-pkts {
+                sensor sensor-interface-drops {
+                    path /interfaces/interface/state/counters/out-queue/red-drop-pkts;
+                }
+                type unsigned-integer;
+                description "Red Drop Pkts";
+            }
+            field rl-drop-pkts {
+                sensor sensor-interface-drops {
+                    path /interfaces/interface/state/counters/out-queue/rl-drop-pkts;
+                }
+                type unsigned-integer;
+                description "Rl Drop Pkts";
+            }
+            field tail-drop-pkts {
+                sensor sensor-interface-drops {
+                    path /interfaces/interface/state/counters/out-queue/tail-drop-pkts;
+                }
+                type unsigned-integer;
+                description "Tail Drop Pkts";
+            }
+            rule-properties {
+                version 1;
+                contributor juniper;
+                category basic;
+                supported-healthbot-version 1.0.0;
+                supported-devices {
+                    juniper {
+                        operating-system junosEvolved {
+                            products PTX {
+                                platforms PTX10008 {
+                                    releases 22.2R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
