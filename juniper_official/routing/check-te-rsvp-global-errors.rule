@@ -21,7 +21,7 @@
             }			
             field authentication-fail {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/authentication-fail;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/authentication-fail;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -39,7 +39,7 @@
             }
             field bad-checksum {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/bad-checksum;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/bad-checksum;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -57,7 +57,7 @@
             }
             field bad-packet-format {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/bad-packet-format;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/bad-packet-format;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -75,7 +75,7 @@
             }
             field bad-packet-length {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/bad-packet-length;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/bad-packet-length;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -93,7 +93,7 @@
             }
             field bad-packet-version {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/bad-packet-version;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/bad-packet-version;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -147,7 +147,7 @@
             }
             field instance-name {
                 sensor lsp {
-                    path "/network-instances/network-instance/@instance-name";
+                    path "/network-instances/network-instance/@name";
                 }
                 sensor lsp-updated {
                     path "/network-instances/network-instance/@name";
@@ -157,7 +157,7 @@
             }
             field message-out-of-order {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/message-out-of-order;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/message-out-of-order;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -211,7 +211,7 @@
             }
             field received-nack {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/received-nack;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/received-nack;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -229,7 +229,7 @@
             }
             field recv-pkt-disabled-intf {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/recv-pkt-disabled-intf;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/recv-pkt-disabled-intf;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -247,7 +247,7 @@
             }
             field send-failure {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/send-failure;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/send-failure;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -265,7 +265,7 @@
             }
             field state-timeout {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/state-timeout;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/state-timeout;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -283,7 +283,7 @@
             }
             field unknown-ack {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/unknown-ack;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/unknown-ack;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -301,7 +301,7 @@
             }
             field unknown-nack {
                 sensor lsp {
-                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/error-counters/unknown-nack;
+                    path /network-instances/network-instance/mpls/signaling-protocols/rsvp-te/global/state/counters/errors/unknown-nack;
                     zero-suppression;
                     data-if-missing {
                         value 0;
@@ -328,7 +328,7 @@
              * Anomaly detection logic to detect rsvp-te global errors.
              */
             trigger rsvp-te-authentication-fail-errors {
-                alert-type routing.rsvp.errors.rsvp-te-authentication-fail-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-authentication-fail-errors;			
                 frequency 1offset;
                 term is-authentication-fail {
                     when {
@@ -346,6 +346,9 @@
                     }
                 }
                 term no-rsvp-te-authentication-fail-errors {
+                    when {
+                        exists "$authentication-fail";
+                    }				
                     then {
                         status {
                             color green;
@@ -355,7 +358,7 @@
                 }
             }
             trigger rsvp-te-bad-checksum-errors {
-                alert-type routing.rsvp.errors.rsvp-te-bad-checksum-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-bad-checksum-errors;			
                 frequency 1offset;			
                 term is-bad-checksum {
                     when {
@@ -373,6 +376,9 @@
                      }
                 }
                 term no-rsvp-te-bad-checksum-errors {
+                    when {
+                        exists "$bad-checksum";
+                    }				
                     then {
                         status {
                             color green;
@@ -382,7 +388,7 @@
                 }
             }
             trigger rsvp-te-bad-packet-format-errors {
-                alert-type routing.rsvp.errors.rsvp-te-bad-packet-format-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-bad-packet-format-errors;			
                 frequency 1offset;			
                 term is-bad-packet-format {
                     when {
@@ -400,6 +406,9 @@
                     }
                 }
                 term no-rsvp-te-bad-packet-format-errors {
+                    when {
+                        exists "$bad-packet-format";
+                    }				
                     then {
                         status {
                             color green;
@@ -409,7 +418,7 @@
                 }
             }				
             trigger rsvp-te-bad-packet-length-errors {
-                alert-type routing.rsvp.errors.rsvp-te-bad-packet-length-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-bad-packet-length-errors;			
                 frequency 1offset;				
                 term is-bad-packet-length {
                     when {
@@ -427,6 +436,9 @@
                     }
                 }
                 term no-rsvp-te-bad-packet-length-errors {
+                    when {
+                        exists "$bad-packet-length";
+                    }				
                     then {
                         status {
                             color green;
@@ -436,7 +448,7 @@
                 }
             }				
             trigger rsvp-te-bad-packet-version-errors {
-                alert-type routing.rsvp.errors.rsvp-te-bad-packet-version-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-bad-packet-version-errors;			
                 frequency 1offset;				
                 term is-bad-packet-version {
                     when {
@@ -454,6 +466,9 @@
                     }
                 }
                 term no-rsvp-te-bad-packet-version-errors {
+                    when {
+                        exists "$bad-packet-version";
+                    }				
                     then {
                         status {
                             color green;
@@ -463,7 +478,7 @@
                 }
             }				
             trigger rsvp-te-in-path-error-messages-errors {
-                alert-type routing.rsvp.errors.rsvp-te-in-path-error-messages-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-in-path-error-messages-errors;			
                 frequency 1offset;				
                 term is-in-path-error-messages {
                     when {
@@ -481,6 +496,9 @@
                     }
                 }
                 term no-rsvp-te-in-path-error-messages-errors {
+                    when {
+                        exists "$in-path-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -490,7 +508,7 @@
                 }
             }				
             trigger rsvp-te-in-reservation-error-messages-errors {
-                alert-type routing.rsvp.errors.rsvp-te-in-reservation-error-messages-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-in-reservation-error-messages-errors;			
                 frequency 1offset;				
                 term in-reservation-error-messages {
                     when {
@@ -508,6 +526,9 @@
                     }
                 }
                 term no-rsvp-te-in-reservation-error-messages-errors {
+                    when {
+                        exists "$in-reservation-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -517,7 +538,7 @@
                 }
             }				
             trigger rsvp-te-message-out-of-order-errors {
-                alert-type routing.rsvp.errors.rsvp-te-message-out-of-order-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-message-out-of-order-errors;			
                 frequency 1offset;				
                 term is-message-out-of-order {
                     when {
@@ -535,6 +556,9 @@
                     }
                 }
                 term no-rsvp-te-message-out-of-order-errors {
+                    when {
+                        exists "$message-out-of-order";
+                    }				
                     then {
                         status {
                             color green;
@@ -544,7 +568,7 @@
                 }
             }				
             trigger rsvp-te-out-path-error-messages-errors {
-                alert-type routing.rsvp.errors.rsvp-te-out-path-error-messages-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-out-path-error-messages-errors;			
                 frequency 1offset;				
                 term out-path-error-messages {
                     when {
@@ -562,6 +586,9 @@
                     }
                 }
                 term no-rsvp-te-out-path-error-messages-errors {
+                    when {
+                        exists "$out-path-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -571,7 +598,7 @@
                 }
             }				
             trigger rsvp-te-out-reservation-error-messages-errors {
-                alert-type routing.rsvp.errors.rsvp-te-out-reservation-error-messages-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-out-reservation-error-messages-errors;			
                 frequency 1offset;				
                 term out-reservation-error-messages {
                     when {
@@ -589,6 +616,9 @@
                     }
                 }
                 term no-rsvp-te-out-reservation-error-messages-errors {
+                    when {
+                        exists "$out-reservation-error-messages";
+                    }				
                     then {
                         status {
                             color green;
@@ -598,7 +628,7 @@
                 }
             }				
             trigger rsvp-te-received-nack-errors {
-                alert-type routing.rsvp.errors.rsvp-te-received-nack-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-received-nack-errors;			
                 frequency 1offset;				
                 term is-received-nack {
                     when {
@@ -616,6 +646,9 @@
                     }
                 }
                 term no-rsvp-te-received-nack-errors {
+                    when {
+                        exists "$received-nack";
+                    }				
                     then {
                         status {
                             color green;
@@ -625,7 +658,7 @@
                 }
             }				
             trigger rsvp-te-recv-pkt-disabled-intf-errors {
-                alert-type routing.rsvp.errors.rsvp-te-recv-pkt-disabled-intf-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-recv-pkt-disabled-intf-errors;			
                 frequency 1offset;				
                 term recv-pkt-disabled-intf {
                     when {
@@ -643,6 +676,9 @@
                     }
                 }
                 term no-rsvp-te-recv-pkt-disabled-intf-errors {
+                    when {
+                        exists "$recv-pkt-disabled-intf";
+                    }				
                     then {
                         status {
                             color green;
@@ -652,7 +688,7 @@
                 }
             }				
             trigger rsvp-te-send-failure-errors {
-                alert-type routing.rsvp.errors.rsvp-te-send-failure-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-send-failure-errors;			
                 frequency 1offset;				
                 term send-failure {
                     when {
@@ -670,6 +706,9 @@
                     }
                 }
                 term no-rsvp-te-send-failure-errors {
+                    when {
+                        exists "$send-failure";
+                    }				
                     then {
                         status {
                             color green;
@@ -679,7 +718,7 @@
                 }
             }				
             trigger rsvp-te-state-timeout-errors {
-                alert-type routing.rsvp.errors.rsvp-te-state-timeout-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-state-timeout-errors;			
                 frequency 1offset;				
                 term is-state-timeout {
                     when {
@@ -697,6 +736,9 @@
                     }
                 }
                 term no-rsvp-te-state-timeout-errors {
+                    when {
+                        exists "$state-timeout";
+                    }				
                     then {
                         status {
                             color green;
@@ -706,7 +748,7 @@
                 }
             }
             trigger rsvp-te-unknown-ack-errors {
-                alert-type routing.rsvp.errors.rsvp-te-unknown-ack-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-unknown-ack-errors;			
                 frequency 1offset;				
                 term is-unknown-ack {
                     when {
@@ -724,6 +766,9 @@
                     }
                 }
                 term no-rsvp-te-unknown-ack-errors {
+                    when {
+                        exists "$unknown-ack";
+                    }				
                     then {
                         status {
                             color green;
@@ -733,7 +778,7 @@
                 }
             }
             trigger rsvp-te-unknown-nack-errors {
-                alert-type routing.rsvp.errors.rsvp-te-unknown-nack-errors;			
+                alert-type routing.mpls.rsvp.errors.rsvp-te-unknown-nack-errors;			
                 frequency 1offset;				
                 term is-unknown-nack {
                     when {
@@ -751,6 +796,9 @@
                     }
                 }
                 term no-rsvp-te-unknown-nack-errors {
+                    when {
+                        exists "$unknown-nack";
+                    }				
                     then {
                         status {
                             color green;
@@ -776,73 +824,73 @@
                     juniper {
                         operating-system junos {
                             products MX {
-                                sensors lsp;							
+                                sensors lsp-updated;							
                                 platforms MX240 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;				
+                                    releases 22.3R1 {
+                                        sensors lsp;				
                                         release-support min-supported-release;
                                     }								
                                 }
                                 platforms MX480 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;				
+                                    releases 22.3R1 {
+                                        sensors lsp;				
                                         release-support min-supported-release;
                                     }								
                                 }
                                 platforms MX960 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;				
+                                    releases 22.3R1 {
+                                        sensors lsp;				
                                         release-support min-supported-release;
                                     }								
                                 }
                                 platforms MX304 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;				
+                                    releases 22.3R1 {
+                                        sensors lsp;				
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX204 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10004 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                    releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10008 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                    releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX10016 {
-                                     releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                     releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }								
                             }
                             products JNP {
-                                sensors lsp;							
+                                sensors lsp-updated;							
                                 platforms JNP10004 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                    releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms JNP10008 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                    releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms JNP10016 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;									
+                                    releases 22.3R1 {
+                                        sensors lsp;									
                                         release-support min-supported-release;
                                     }
                                 }								
@@ -850,67 +898,85 @@
                         }
                         operating-system junosEvolved {
                             products ACX {
-                                sensors lsp;			
+                                sensors lsp-updated;			
                                 platforms ACX7024 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
-                                platforms ACX7100 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                platforms ACX7100-32C {
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms ACX7100-48L {
+                                    releases 22.3R1 {
+                                        sensors lsp;
+                                        release-support min-supported-release;
+                                    }
+                                }								
                                 platforms ACX7348 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7332 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }								
                                 platforms ACX7024X {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms ACX7509 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                             }
                             products PTX {
-                                sensors lsp;
-                                platforms PTX10001 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                sensors lsp-updated;
+                                platforms PTX10001-36MR-K {
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms PTX10001-36MR {
+                                    releases 22.3R1 {
+                                        sensors lsp;
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms PTX10001-20C {
+                                    releases 22.3R1 {
+                                        sensors lsp;
+                                        release-support min-supported-release;
+                                    }
+                                }																
                                 platforms PTX10004 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms PTX10008 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms PTX10016 {
-                                    releases 20.1R1 {
-                                        sensors lsp-updated;
+                                    releases 22.3R1 {
+                                        sensors lsp;
                                         release-support min-supported-release;
                                     }
                                 }								
