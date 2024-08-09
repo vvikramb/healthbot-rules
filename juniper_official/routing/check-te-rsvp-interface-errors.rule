@@ -200,8 +200,8 @@ healthbot {
             /*
              * Anomaly detection logic to detect rsvp-te interface errors.
              */
-            trigger rsvp-te-interface-errors {
-                alert-type routing.mpls.rsvp.errors.interface.rsvp-te-interface-errors;
+            trigger rsvp-te-interface-authentication-fail-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-authentication-fail-errors;			
                 frequency 1offset;
                 term is-authentication-fail {
                     when {
@@ -218,7 +218,22 @@ healthbot {
                         }
                         next;
                     }
+                }					
+                term no-authentication-fail {
+                    when {
+                        exists "$authentication-fail";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Authentication failure error count($authentication-fail)on $te-interface is normal";
+                        }
+                    }
                 }
+            }					
+            trigger rsvp-te-interface-bad-checksum-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-bad-checksum-errors;			
+                frequency 1offset;			
                 term is-bad-checksum {
                     when {
                         increasing-at-least-by-value "$bad-checksum" {
@@ -235,6 +250,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-bad-checksum {
+                    when {
+                        exists "$bad-checksum";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Bad checksum error count($bad-checksum)on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-bad-packet-format-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-bad-packet-format-errors;			
+                frequency 1offset;			
                 term is-bad-packet-format {
                     when {
                         increasing-at-least-by-value "$bad-packet-format" {
@@ -251,6 +281,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-bad-packet-format {
+                    when {
+                        exists "$$bad-packet-format";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Bad packet format error count($bad-packet-format)increasing on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-bad-packet-length-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-bad-packet-length-errors;			
+                frequency 1offset;			
                 term is-bad-packet-length {
                     when {
                         increasing-at-least-by-value "$bad-packet-length" {
@@ -267,6 +312,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-bad-packet-length {
+                    when {
+                        exists "$bad-packet-length";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Bad packet length error count($bad-packet-length)on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-bad-packet-version-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-bad-packet-version-errors;			
+                frequency 1offset;			
                 term is-bad-packet-version {
                     when {
                         increasing-at-least-by-value "$bad-packet-version" {
@@ -283,6 +343,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-bad-packet-version {
+                    when {
+                        exists "$bad-packet-version";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Bad packet version error count($bad-packet-version)on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-path-error-messages-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-authentication-fail-errors;			
+                frequency 1offset;			
                 term is-in-path-error-messages {
                     when {
                         increasing-at-least-by-value "$in-path-error-messages" {
@@ -299,6 +374,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-in-path-error-messages {
+                    when {
+                        exists "$in-path-error-messages";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "In path error messages count($in-path-error-messages)on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-in-reservation-error-messages-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-in-reservation-error-messages-errors;			
+                frequency 1offset;			
                 term in-reservation-error-messages {
                     when {
                         increasing-at-least-by-value "$in-reservation-error-messages" {
@@ -315,6 +405,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-in-reservation-error-messages {
+                    when {
+                        exists "$in-reservation-error-messages";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "In reservation error messages count($in-reservation-error-messages)on $te-interface";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-message-out-of-order-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-message-out-of-order-errors;			
+                frequency 1offset;			
                 term is-message-out-of-order {
                     when {
                         increasing-at-least-by-value "$message-out-of-order" {
@@ -331,6 +436,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-message-out-of-order {
+                    when {
+                        exists "$message-out-of-order";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Message out of order error count($message-out-of-order)on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-out-path-error-messages-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-out-path-error-messages-errors;			
+                frequency 1offset;			
                 term out-path-error-messages {
                     when {
                         increasing-at-least-by-value "$out-path-error-messages" {
@@ -347,6 +467,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-out-path-error-messages {
+                    when {
+                        exists "$out-path-error-messages";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Out path error messages count($out-path-error-messages)on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-out-reservation-error-messages-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-out-reservation-error-messages-errors;			
+                frequency 1offset;			
                 term out-reservation-error-messages {
                     when {
                         increasing-at-least-by-value "$out-reservation-error-messages" {
@@ -363,6 +498,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-out-reservation-error-messages {
+                    when {
+                        exists "$out-reservation-error-messages";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Out reservation error messages count($out-reservation-error-messages) on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-received-nack-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-received-nack-errors;			
+                frequency 1offset;			
                 term is-received-nack {
                     when {
                         increasing-at-least-by-value "$received-nack" {
@@ -379,6 +529,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-received-nack {
+                    when {
+                        exists "$received-nack";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Received nack error count($received-nack) on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-recv-pkt-disabled-intf-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-recv-pkt-disabled-intf-errors;			
+                frequency 1offset;			
                 term recv-pkt-disabled-intf {
                     when {
                         increasing-at-least-by-value "$recv-pkt-disabled-intf" {
@@ -395,6 +560,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-recv-pkt-disabled-intf {
+                    when {
+                        exists "$recv-pkt-disabled-intf";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Recv-pkt-disabled-intf error count($recv-pkt-disabled-intf) on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-send-failure-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-send-failure-errors;			
+                frequency 1offset;			
                 term send-failure {
                     when {
                         increasing-at-least-by-value "$send-failure" {
@@ -411,6 +591,21 @@ healthbot {
                         next;
                     }
                 }
+                term no-send-failure {
+                    when {
+                        exists "$send-failure";
+                    }				
+                    then {
+                        status {
+                            color green;
+                            message "Send failure error count($send-failure) on $te-interface is normal";
+                        }
+                    }
+                }				
+            }
+            trigger rsvp-te-interface-state-timeout-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-state-timeout-errors;			
+                frequency 1offset;			
                 term is-state-timeout {
                     when {
                         increasing-at-least-by-value "$state-timeout" {
@@ -426,14 +621,17 @@ healthbot {
                         }
                     }
                 }
-                term no-rsvp-te-interface-errors {
+                term no-state-timeout {
+                    when {
+                        exists "$state-timeout";
+                    }				
                     then {
                         status {
                             color green;
-                            message "RSVP TE interface $te-interface error count is normal";
+                            message "State timeout error count($state-timeout) on $te-interface is normal";
                         }
                     }
-                }
+                }				
             }
             variable input-te-interface {
                 value .*;
@@ -452,70 +650,135 @@ healthbot {
                     juniper {
                         operating-system junos {
                             products MX {
-                                platforms MX2010 {
-                                    releases 17.4R1 {
+                                platforms MX204 {
+                                    releases 20.1R1 {
                                         release-support min-supported-release;
                                     }
-                                }
-                                platforms MX2020 {
-                                    releases 17.4R1 {
-                                        release-support min-supported-release;
-                                    }
-                                }
+                                }								
                                 platforms MX240 {
-                                    releases 17.4R1 {
+                                    releases 20.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms MX304 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
                                 platforms MX480 {
-                                    releases 17.4R1 {
+                                    releases 20.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                                 platforms MX960 {
-                                    releases 17.4R1 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10004 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10008 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10016 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                            }
+                            products JNP {
+                                platforms JNP10004 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms JNP10008 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms JNP10016 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                            }							
+                        }
+                        operating-system junosEvolved {
+                            products ACX {
+                                platforms ACX7024 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7100-32C {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7100-48L {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms ACX7348 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7332 {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms ACX7024X {
+                                    releases 20.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7509 {
+                                    releases 20.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
                             }
                             products PTX {
-                                platforms PTX1000 {
-                                    releases 17.4R1 {
+                                platforms PTX10001-36MR-K {
+                                    releases 20.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
-                                platforms PTX10000 {
-                                    releases 17.4R1 {
+                                platforms PTX10001-36MR {
+                                    releases 20.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
-                                platforms PTX5000 {
-                                    releases 17.4R1 {
+                                platforms PTX10001-20C {
+                                    releases 20.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
-                            }
-                            products QFX {
-                                platforms QFX10000 {
-                                    releases 17.4R1 {
+                                platforms PTX10004 {
+                                    releases 20.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
-                                platforms QFX5200 {
-                                    releases 17.4R1 {
+                                platforms PTX10008 {
+                                    releases 20.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
-                            }
-                        }
-                        operating-system junosEvolved {
-                            products ACX {
-                                platforms All {
-                                    releases 22.3R1 {
+                                platforms PTX10016 {
+                                    releases 20.1R1 {
                                         release-support min-supported-release;
                                     }
-                                }
-                            }
+                                }								
+                            }							
                         }						
                     }
                 }
