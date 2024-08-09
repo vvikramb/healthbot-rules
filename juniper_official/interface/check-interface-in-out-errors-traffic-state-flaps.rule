@@ -525,7 +525,37 @@ healthbot {
                     juniper {
                         operating-system junosEvolved {
                             products ACX {
-                                platforms All {
+                                platforms ACX7024 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7024X {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms ACX7100-32C {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7100-48L {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7332 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms ACX7348 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7509 {
                                     releases 22.3R1 {
                                         release-support min-supported-release;
                                     }
@@ -545,12 +575,27 @@ healthbot {
                                     releases 22.2R3 {
                                         release-support min-supported-release;
                                     }
+                                }
+                                platforms MX240 {
+                                    releases 22.2R3 {
+                                        release-support min-supported-release;
+                                    }
                                 }								
                                 platforms MX304 {
                                     releases 22.2R3 {
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms MX480 {
+                                    releases 22.2R3 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX960 {
+                                    releases 22.2R3 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
                                 platforms MX10004 {
                                     releases 22.3R1 {
                                         release-support min-supported-release;
@@ -590,7 +635,4 @@ healthbot {
             }
     	}	
     }
-}	
-	
-		
-		
+}
