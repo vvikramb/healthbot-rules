@@ -355,8 +355,8 @@ healthbot {
                     }
                 }				
             }
-            trigger rsvp-te-interface-path-error-messages-errors {
-                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-authentication-fail-errors;			
+            trigger rsvp-te-interface-in-path-error-messages-errors {
+                alert-type routing.mpls.rsvp.errors.rsvp-te-interface-in-path-error-messages-errors;			
                 frequency 1offset;			
                 term is-in-path-error-messages {
                     when {
