@@ -19,4 +19,4 @@ ntpStatusView:
         sys-jitter: sys-jitter
         clk-jitter: clk-jitter
         clk-wander: clk-wander
-        statusinfo: statusinfo
+        statusinfo: statusinfo | status
