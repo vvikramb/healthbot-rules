@@ -283,7 +283,7 @@ healthbot {
                 }
                 term no-bad-packet-format {
                     when {
-                        exists "$$bad-packet-format";
+                        exists "$bad-packet-format";
                     }				
                     then {
                         status {
