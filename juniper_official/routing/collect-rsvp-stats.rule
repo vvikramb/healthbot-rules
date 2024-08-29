@@ -14,7 +14,7 @@
  healthbot {
     topic routing.mpls {
         rule collect-rsvp-stats {
-            keys [ lsp-name lsp-stats-counter ];
+            keys [ lsp-name ];
             description "Collects LSP stats periodically";
             sensor lsp {
                 open-config {
@@ -45,13 +45,6 @@
                 }
                 type integer;
                 description "LSP bytes counter";
-            }
-            field lsp-stats-counter {
-                sensor lsp {
-                    path /mpls/lsps/constrained-path/tunnels/tunnel/state/counters/name;
-                }
-                type string;
-                description "LSP counter name";
             }
             field lsp-stats-packets {
                 sensor lsp {
