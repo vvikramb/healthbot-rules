@@ -7,8 +7,8 @@ LldpNeighborInfoTable:
 
 LldpNeighborInfoView:
   fields:
-   remote-system-name: lldp-remote-system-name
-   lldp-remote-port-id: lldp-remote-port-id
+    remote-system-name: lldp-remote-system-name
+    lldp-remote-port-id: lldp-remote-port-id
 
 xslt: "<xsl:stylesheet version=\"1.0\"
  xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"
