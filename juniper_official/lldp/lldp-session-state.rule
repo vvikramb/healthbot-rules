@@ -23,29 +23,36 @@ healthbot {
              */
             sensor lldp-sensor {
                 synopsis "LLDP open-config sensor definition";
-                description "/lldp open-config sensor to collect telemetry data from network device";
-                open-config {
-                    sensor-name /lldp/;
-                    frequency 60s;
+                description "lldp netconf sensor to collect data from network device";
+                iAgent {
+                    file LldpNeighborInfoTable.yml;
+                    table LldpNeighborInfoTable;
+                    frequency 180s;
                 }
             }
             /*
              * Fields defined using sensor path. Map the longer sensor names
              * to the shorter field names used in the rules.
              */
-            field lldp-enabled {
+            field remote-system-name {
                 sensor lldp-sensor {
-                    path /lldp/interfaces/interface/state/enabled;
+                    path remote-system-name;
                 }
                 type string;
-                description "Local interface LLDP state";
-                enumerate false as 0;
-                enumerate true as 1;
+                description "LLDP neighbor system name";
+
+            }
+            field lldp-remote-port-id {
+                sensor lldp-sensor {
+                    path lldp-remote-port-id;
+                }
+                type string;
+                description "LLDP neighbor port id";
             }
             field interface-name {
                 sensor lldp-sensor {
-                    where "/lldp/interfaces/interface/@name =~ /{{interface-name}}/";
-                    path "/lldp/interfaces/interface/@name";
+                    where "lldp-local-interface =~ /{{interface-name}}/";
+                    path "lldp-local-interface";
                 }
                 type string;
                 description "Interfaces to be monitored";
@@ -53,32 +60,32 @@ healthbot {
             /*
              * Anomaly detection logic.
              */
-            trigger lldp-session-state {
+            trigger lldp-neighbor-state {
                 synopsis "LLDP state KPI";
                 description "Sets health based on lldp session state changes and notify anomaly.";
                 frequency 1offset;
                 /*
                  * Sets color to green when LLDP neighbor state is true.
                  */
-                term is-lldp-session-up {
+                term is-lldp-neighbor-discovered {
                     when {
-                        matches-with "$lldp-enabled" true;
+                        exists "$remote-system-name";
                     }
                     then {
                         status {
                             color green;
-                            message "LLDP status on interface $interface-name is Enabled";
+                            message "LLDP neighbor state of $interface-name is UP, remote-system-name:$remote-system-name lldp-remote-port-id:$lldp-remote-port-id";
                         }
                     }
                 }
                 /*
                  * Defaults color to red and notify anomaly.
                  */
-                term lldp-session-down {
+                term lldp-neighbor-undiscovered {
                     then {
                         status {
                             color red;
-                            message "LLDP status on interface $interface-name is Disabled";
+                            message "LLDP neighbor state of $interface-name is DOWN";
                         }
                     }
                 }

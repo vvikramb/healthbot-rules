@@ -1,0 +1,30 @@
+---
+LldpNeighborInfoTable:
+  rpc: get-lldp-neighbor-detail-information
+  item: lldp-neighbor-information
+  key: lldp-local-interface
+  view: LldpNeighborInfoView
+  
+LldpNeighborInfoView:
+    fields:
+      remote-system-name: lldp-remote-system-name
+      lldp-remote-port-id: lldp-remote-port-id
+
+xslt: "<xsl:stylesheet version=\"1.0\"
+ xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"
+ xmlns:ns=\"some:ns\">
+ <xsl:output omit-xml-declaration=\"yes\" indent=\"yes\"/>
+ <xsl:strip-space elements=\"*\"/>
+ <ns:WhiteList>
+      <name>lldp-local-interface</name>
+      <name>lldp-remote-system-name</name>
+      <name>lldp-remote-port-id</name>
+ </ns:WhiteList>
+ <xsl:template match=\"node()|@*\">
+      <xsl:copy>
+             <xsl:apply-templates select=\"node()|@*\"/>
+      </xsl:copy>
+ </xsl:template>
+ <xsl:template match=
+  \"*[not(descendant-or-self::*[name()=document('')/*/ns:WhiteList/*]) or (self::*[name()=document('')/*/ns:blacklist/*])]\"/>
+ </xsl:stylesheet>"
