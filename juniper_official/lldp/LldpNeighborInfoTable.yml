@@ -4,9 +4,9 @@ LldpNeighborInfoTable:
   item: lldp-neighbor-information
   key: lldp-local-interface
   view: LldpNeighborInfoView
- 
+
 LldpNeighborInfoView:
-    fields:
+  fields:
       remote-system-name: lldp-remote-system-name
       lldp-remote-port-id: lldp-remote-port-id
 
