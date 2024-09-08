@@ -147,8 +147,18 @@
                                 }
                             }
                             products EX {
-                                platforms All {
-                                    releases 15.2R1 {
+                                platforms EX9204 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms EX9208 {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms EX9216 {
+                                    releases 22.3R1 {
                                         release-support min-supported-release;
                                     }
                                 }
