@@ -380,7 +380,7 @@ healthbot {
                                     }
                                 }
                             }							
-						}						
+                        }
                     }
                 }
                 helper-files other {
