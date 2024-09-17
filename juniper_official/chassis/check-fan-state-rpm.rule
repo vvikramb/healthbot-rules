@@ -379,6 +379,11 @@ healthbot {
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms ex4300-48mp {
+                                    releases 22.3R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
                             }							
                         }
                     }
