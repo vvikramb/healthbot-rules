@@ -293,6 +293,16 @@
                                         sensors isis-oc;
                                         release-support min-supported-release;
                                     }
+                                }
+                                platforms ex4300-48mp {
+                                    releases 23.2 {
+                                        sensors isis-oc-junos;
+                                        release-support min-supported-release;
+                                    }
+                                    releases 22.2 {
+                                        sensors isis-oc;
+                                        release-support min-supported-release;
+                                    }
                                 }								
                             }							
                         }
