@@ -4,10 +4,10 @@ LldpInfoTable:
   item: lldp-interface-information
   key: lldp-interface-name
   view: LldpInfoView
-  
+
 LldpInfoView:
-    fields:
-      lldp-interface-neighbor-count: lldp-interface-neighbor-count
+  fields:
+    lldp-interface-neighbor-count: lldp-interface-neighbor-count
 
 xslt: "<xsl:stylesheet version=\"1.0\"
  xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"
