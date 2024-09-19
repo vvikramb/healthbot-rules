@@ -1,14 +1,13 @@
 ---
-LldpNeighborInfoTable:
-  rpc: get-lldp-neighbor-detail-information
-  item: lldp-neighbor-information
-  key: lldp-local-interface
-  view: LldpNeighborInfoView
-
-LldpNeighborInfoView:
-  fields:
-    remote-system-name: lldp-remote-system-name
-    lldp-remote-port-id: lldp-remote-port-id
+LldpInfoTable:
+  rpc: get-lldp-information-detail
+  item: lldp-interface-information
+  key: lldp-interface-name
+  view: LldpInfoView
+  
+LldpInfoView:
+    fields:
+      lldp-interface-neighbor-count: lldp-interface-neighbor-count
 
 xslt: "<xsl:stylesheet version=\"1.0\"
  xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"
@@ -16,9 +15,8 @@ xslt: "<xsl:stylesheet version=\"1.0\"
  <xsl:output omit-xml-declaration=\"yes\" indent=\"yes\"/>
  <xsl:strip-space elements=\"*\"/>
  <ns:WhiteList>
-      <name>lldp-local-interface</name>
-      <name>lldp-remote-system-name</name>
-      <name>lldp-remote-port-id</name>
+      <name>lldp-interface-name/name>
+      <name>lldp-interface-neighbor-count</name>
  </ns:WhiteList>
  <xsl:template match=\"node()|@*\">
       <xsl:copy>

@@ -25,8 +25,8 @@ healthbot {
                 synopsis "LLDP open-config sensor definition";
                 description "lldp netconf sensor to collect data from network device";
                 iAgent {
-                    file LldpNeighborInfoTable.yml;
-                    table LldpNeighborInfoTable;
+                    file LldpInfoTable.yml;
+                    table LldpInfoTable;
                     frequency 180s;
                 }
             }
@@ -34,34 +34,26 @@ healthbot {
              * Fields defined using sensor path. Map the longer sensor names
              * to the shorter field names used in the rules.
              */
-            field remote-system-name {
-                sensor lldp-sensor {
-                    path remote-system-name;
-                }
-                type string;
-                description "LLDP neighbor system name";
-
-            }
-            field lldp-remote-port-id {
-                sensor lldp-sensor {
-                    path lldp-remote-port-id;
-                }
-                type string;
-                description "LLDP neighbor port id";
-            }
             field interface-name {
                 sensor lldp-sensor {
-                    where "lldp-local-interface =~ /{{interface-name}}/";
-                    path "lldp-local-interface";
+                    where "lldp-interface-name =~ /{{interface-name}}/";
+                    path "lldp-interface-name";
                 }
                 type string;
                 description "Interfaces to be monitored";
+            }
+            field lldp-neighbor-count {
+                sensor lldp-sensor {
+                    path lldp-interface-neighbor-count;
+                }
+                type integer;
+                description "LLDP neighbor status";
             }
             /*
              * Anomaly detection logic.
              */
             trigger lldp-neighbor-state {
-                synopsis "LLDP state KPI";
+                synopsis "LLDP neighbor state KPI";
                 description "Sets health based on lldp session state changes and notify anomaly.";
                 frequency 1offset;
                 /*
@@ -69,12 +61,12 @@ healthbot {
                  */
                 term is-lldp-neighbor-discovered {
                     when {
-                        exists "$remote-system-name";
+                        greater-than-or-equal-to "$lldp-neighbor-status" 1;
                     }
                     then {
                         status {
                             color green;
-                            message "LLDP neighbor state of $interface-name is UP, remote-system-name:$remote-system-name lldp-remote-port-id:$lldp-remote-port-id";
+                            message "$lldp-neighbor-count lldp neighbors discovered on $interface-name";
                         }
                     }
                 }
@@ -85,7 +77,7 @@ healthbot {
                     then {
                         status {
                             color red;
-                            message "LLDP neighbor state of $interface-name is DOWN";
+                            message "$lldp-neighbor-count lldp neighbors discovered on $interface-name";
                         }
                     }
                 }
