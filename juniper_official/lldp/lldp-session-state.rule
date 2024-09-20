@@ -61,7 +61,7 @@ healthbot {
                  */
                 term is-lldp-neighbor-discovered {
                     when {
-                        greater-than-or-equal-to "$lldp-neighbor-status" 1;
+                        greater-than-or-equal-to "$lldp-neighbor-count" 1;
                     }
                     then {
                         status {
@@ -99,16 +99,98 @@ healthbot {
                     juniper {
                          operating-system junos {
                             products MX {
-                                platforms All {
+                                platforms MX204 {
                                     releases 15.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms MX240 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms MX304 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX480 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX960 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms MX10004 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10008 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10016 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
                             }
+                            products JNP {
+                                platforms JNP10004 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms JNP10008 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms JNP10016 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                            }							
                          }
                          operating-system junosEvolved {
                             products ACX {
-                                platforms All {
+                                platforms ACX7024 {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7024X {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms ACX7100-32C {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7100-48L {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7332 {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms ACX7348 {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7509 {
                                     releases 22.1R1 {
                                         release-support min-supported-release;
                                     }
