@@ -23,62 +23,61 @@ healthbot {
              */
             sensor lldp-sensor {
                 synopsis "LLDP open-config sensor definition";
-                description "/lldp open-config sensor to collect telemetry data from network device";
-                open-config {
-                    sensor-name /lldp/;
-                    frequency 60s;
+                description "lldp netconf sensor to collect data from network device";
+                iAgent {
+                    file LldpInfoTable.yml;
+                    table LldpInfoTable;
+                    frequency 180s;
                 }
             }
             /*
              * Fields defined using sensor path. Map the longer sensor names
              * to the shorter field names used in the rules.
              */
-            field lldp-enabled {
-                sensor lldp-sensor {
-                    path /lldp/interfaces/interface/state/enabled;
-                }
-                type string;
-                description "Local interface LLDP state";
-                enumerate false as 0;
-                enumerate true as 1;
-            }
             field interface-name {
                 sensor lldp-sensor {
-                    where "/lldp/interfaces/interface/@name =~ /{{interface-name}}/";
-                    path "/lldp/interfaces/interface/@name";
+                    where "lldp-interface-name =~ /{{interface-name}}/";
+                    path "lldp-interface-name";
                 }
                 type string;
                 description "Interfaces to be monitored";
             }
+            field lldp-neighbor-count {
+                sensor lldp-sensor {
+                    path lldp-interface-neighbor-count;
+                }
+                type integer;
+                description "LLDP neighbor status";
+            }
             /*
              * Anomaly detection logic.
              */
-            trigger lldp-session-state {
-                synopsis "LLDP state KPI";
+            trigger lldp-neighbor-state {
+                synopsis "LLDP neighbor state KPI";
                 description "Sets health based on lldp session state changes and notify anomaly.";
                 frequency 1offset;
                 /*
                  * Sets color to green when LLDP neighbor state is true.
                  */
-                term is-lldp-session-up {
+                term is-lldp-neighbor-discovered {
                     when {
-                        matches-with "$lldp-enabled" true;
+                        greater-than-or-equal-to "$lldp-neighbor-count" 1;
                     }
                     then {
                         status {
                             color green;
-                            message "LLDP status on interface $interface-name is Enabled";
+                            message "$lldp-neighbor-count lldp neighbors discovered on $interface-name";
                         }
                     }
                 }
                 /*
                  * Defaults color to red and notify anomaly.
                  */
-                term lldp-session-down {
+                term lldp-neighbor-undiscovered {
                     then {
                         status {
                             color red;
-                            message "LLDP status on interface $interface-name is Disabled";
+                            message "$lldp-neighbor-count lldp neighbors discovered on $interface-name";
                         }
                     }
                 }
@@ -100,16 +99,98 @@ healthbot {
                     juniper {
                          operating-system junos {
                             products MX {
-                                platforms All {
+                                platforms MX204 {
                                     releases 15.1R1 {
                                         release-support min-supported-release;
                                     }
                                 }
+                                platforms MX240 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms MX304 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX480 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX960 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms MX10004 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10008 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms MX10016 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
                             }
+                            products JNP {
+                                platforms JNP10004 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms JNP10008 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms JNP10016 {
+                                    releases 15.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                            }							
                          }
                          operating-system junosEvolved {
                             products ACX {
-                                platforms All {
+                                platforms ACX7024 {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7024X {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms ACX7100-32C {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7100-48L {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7332 {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }								
+                                platforms ACX7348 {
+                                    releases 22.1R1 {
+                                        release-support min-supported-release;
+                                    }
+                                }
+                                platforms ACX7509 {
                                     releases 22.1R1 {
                                         release-support min-supported-release;
                                     }
