@@ -38,7 +38,7 @@ healthbot {
 				sensor sensor-trap-stats {
 					path "/components/component/properties/property/state/value";
 				}
-				type integer;
+				type unsigned-integer;
 				description "Trap Value";
 			}
 			rule-properties {

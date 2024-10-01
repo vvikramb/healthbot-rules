@@ -13,7 +13,7 @@ healthbot {
                 synopsis "PFE ASIC drops definition";
                 description "GNMI based telemetry which collects ASIC drops from interface, fabric, lookup, host and Queuing blocks";
                 open-config {
-                    sensor-name /components/component/;
+                    sensor-name /components/component/integrated-circuit/pipeline-counters/;
                     frequency 60s;
                 }
             }

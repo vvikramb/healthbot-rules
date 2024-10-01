@@ -5,7 +5,7 @@
 healthbot {
     topic hardware.fpc {
         rule pfe-stats {
-            keys fpc-name;
+            keys fpc;
             synopsis "PFE transit traffic stats";
             description "PFE ASIC input/output stats";
             sensor pfestats {
@@ -32,7 +32,7 @@ healthbot {
                 type unsigned-integer;
                 description "PFE output stats";
             }
-            field fpc-name {
+            field fpc {
                 sensor pfestats {
                     path "/components/component/@name";
                 }
