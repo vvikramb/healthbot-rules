@@ -23,4 +23,3 @@ RsvpGlobalsView:
         resv-timeout: rsvp-error[error-message="Resv timeout"]/error-count
         unknown-msg-id-ack: rsvp-error[error-message="Unknown msg-id ack"]/error-count
         unknown-msg-id-nack: rsvp-error[error-message="Unknown msg-id nack"]/error-count
-
