@@ -665,7 +665,6 @@ healthbot {
                                 }								
                             }
                             products EX {
-                                sensors pfe-sensor-netconf;							
                                 platforms EX4300-48MP {
                                     releases 22.4R2.8 {
                                         release-support min-supported-release;
